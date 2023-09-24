@@ -1,6 +1,11 @@
+name: UT for Solidity 
 
-name: Running Solidity Unit Tests
-on: [push]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches: ['main']
 
 jobs:
   run_sol_contracts_job:
