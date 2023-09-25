@@ -1,8 +1,8 @@
 'use strict'
+import LzString from 'lz-string'
 
-export class QueryParams  {
-
-  update (params) {
+export class QueryParams {
+  update(params) {
     const currentParams = this.get()
     const keys = Object.keys(params)
     for (const x in keys) {
@@ -16,7 +16,7 @@ export class QueryParams  {
     window.location.hash = queryString.slice(0, -1)
   }
 
-  get () {
+  get() {
     const qs = window.location.hash.substr(1)
 
     if (window.location.search.length > 0) {
@@ -25,7 +25,7 @@ export class QueryParams  {
       window.location.search = ''
     }
 
-    const params = {}
+    const params: any = {}
     const parts = qs.split('&')
     for (const x in parts) {
       const keyValue = parts[x].split('=')
@@ -33,6 +33,8 @@ export class QueryParams  {
         params[keyValue[0]] = keyValue[1]
       }
     }
+    params.code = params.code ? params.code : encodeURIComponent(LzString.compressToBase64(''))
+
     return params
   }
 }
