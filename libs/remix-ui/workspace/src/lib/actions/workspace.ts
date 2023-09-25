@@ -37,6 +37,7 @@ import { IndexedDBStorage } from '../../../../../../apps/remix-ide/src/app/files
 import { getUncommittedFiles } from '../utils/gitStatusFilter'
 import { AppModal, ModalTypes } from '@remix-ui/app'
 import { contractDeployerScripts, etherscanScripts } from '@remix-project/remix-ws-templates'
+import LzString from 'lz-string'
 
 declare global {
   interface Window {
@@ -214,7 +215,7 @@ export const loadWorkspacePreset = async (template: WorkspaceTemplate = 'remixDe
           const hashed = bufferToHex(hash.keccakFromString(params.code))
 
           path = 'contract-' + hashed.replace('0x', '').substring(0, 10) + (params.language && params.language.toLowerCase() === 'yul' ? '.yul' : '.sol')
-          content = atob(decodeURIComponent(params.code))
+          content = LzString.decompressFromBase64(decodeURIComponent(params.code))
           await workspaceProvider.set(path, content)
         }
         if (params.url) {

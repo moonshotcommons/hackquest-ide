@@ -378,7 +378,7 @@ class AppComponent {
     ])
 
     this.layout.panels = {
-      tabs: { plugin: tabProxy, active: true },
+      tabs: { plugin: tabProxy, active: false },
       editor: { plugin: editor, active: true },
       main: { plugin: appPanel, active: false },
       terminal: { plugin: terminal, active: true, minimized: false },
@@ -408,7 +408,11 @@ class AppComponent {
       'web3Provider',
       'offsetToLineColumnConverter',
     ])
-    await this.appManager.activatePlugin(['mainPanel', 'menuicons', 'tabs'])
+    await this.appManager.activatePlugin([
+      'mainPanel',
+      'menuicons',
+      // 'tabs'
+    ])
     await this.appManager.activatePlugin(['sidePanel']) // activating  host plugin separately
     // await this.appManager.activatePlugin(['home'])
     await this.appManager.activatePlugin(['settings', 'config'])
@@ -458,7 +462,7 @@ class AppComponent {
               if (this.appManager.pluginLoader.current === 'queryParams' && this.workspace.length > 0) {
                 this.menuicons.select(this.workspace[this.workspace.length - 1])
               } else {
-                this.appManager.call('tabs', 'focus', 'home')
+                // this.appManager.call('tabs', 'focus', 'home')
               }
             }
 
