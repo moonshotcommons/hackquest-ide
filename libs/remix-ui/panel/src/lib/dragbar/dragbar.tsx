@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-use-before-define
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import Draggable from 'react-draggable'
 import './dragbar.css'
 
@@ -18,13 +18,13 @@ const DragBar = (props: IRemixDragBarUi) => {
   function stopDrag(e: MouseEvent, data: any) {
     const h = window.innerHeight - data.y
     props.refObject.current.setAttribute('style', `height: ${h}px;`)
-    setDragBarPosY(window.innerHeight - props.refObject.current.offsetHeight)
+    setDragBarPosY(window.innerHeight - props.refObject.current.offsetHeight - 64)
     setDragState(false)
     props.setHideStatus(false)
   }
   const handleResize = () => {
     if (!props.refObject.current) return
-    setDragBarPosY(window.innerHeight - props.refObject.current.offsetHeight)
+    setDragBarPosY(window.innerHeight - props.refObject.current.offsetHeight - 64)
   }
 
   useEffect(() => {
@@ -44,7 +44,7 @@ const DragBar = (props: IRemixDragBarUi) => {
   return (
     <>
       <div className={`overlay ${dragState ? '' : 'd-none'}`}></div>
-      <Draggable nodeRef={nodeRef} position={{x: 0, y: dragBarPosY}} onStart={startDrag} onStop={stopDrag} axis="y">
+      <Draggable nodeRef={nodeRef} position={{ x: 0, y: dragBarPosY }} onStart={startDrag} onStop={stopDrag} axis="y">
         <div ref={nodeRef} className={`dragbar_terminal ${dragState ? 'ondrag' : ''}`}></div>
       </Draggable>
     </>
