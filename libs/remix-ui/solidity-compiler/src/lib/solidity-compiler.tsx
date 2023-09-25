@@ -201,7 +201,6 @@ export const SolidityCompiler = (props: SolidityCompilerProps) => {
       for more information.
     </div>
   )
-
   return (
     <>
       <div id="compileTabView">

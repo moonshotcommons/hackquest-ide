@@ -140,7 +140,6 @@ export const CompilerContainer = (props: CompilerContainerProps) => {
         const useFileConfiguration = ((await api.getAppParameter('useFileConfiguration')) as boolean) || false
         let configFilePathSaved = await api.getAppParameter('configFilePath')
         if (!configFilePathSaved || configFilePathSaved == '') configFilePathSaved = defaultPath
-
         setConfigFilePath(configFilePathSaved)
 
         setState((prevState) => {

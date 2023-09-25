@@ -177,6 +177,7 @@ export const TabsUI = (props: TabsUIProps) => {
                 _paq.push(['trackEvent', 'editor', 'clickRunFromEditor', tabsState.currentExt])
               } else if (tabsState.currentExt === 'sol' || tabsState.currentExt === 'yul') {
                 await props.plugin.call('solidity', 'compile', path)
+                console.info(11111)
                 _paq.push(['trackEvent', 'editor', 'clickRunFromEditor', tabsState.currentExt])
               }
             }}

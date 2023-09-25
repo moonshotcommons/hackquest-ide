@@ -91,9 +91,9 @@ const RemixApp = (props: IRemixAppUi) => {
           <h1 className="hackquest-header-text">HackQuest IDE</h1>
         </div>
         <div className={`remixIDE ${appReady ? '' : 'd-none'}`} data-id="remixIDE">
-          {/* <div id="icon-panel" data-id="remixIdeIconPanel" className="custom_icon_panel iconpanel bg-light">
+          <div id="icon-panel" data-id="remixIdeIconPanel" className="custom_icon_panel iconpanel bg-light">
             {props.app.menuicons.render()}
-          </div> */}
+          </div>
           <div ref={sidePanelRef} id="side-panel" data-id="remixIdeSidePanel" className={`sidepanel border-right border-left ${hideSidePanel ? 'd-none' : ''}`}>
             {props.app.sidePanel.render()}
           </div>

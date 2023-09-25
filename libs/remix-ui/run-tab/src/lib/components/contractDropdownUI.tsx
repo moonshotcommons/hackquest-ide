@@ -5,7 +5,7 @@ import { ContractDropdownProps, DeployMode } from '../types'
 import { ContractData, FuncABI, OverSizeLimit } from '@remix-project/core-plugin'
 import * as ethJSUtil from '@ethereumjs/util'
 import { ContractGUI } from './contractGUI'
-import { CustomTooltip, deployWithProxyMsg, upgradeWithProxyMsg } from '@remix-ui/helper'
+import { CustomTooltip, deployWithProxyMsg, upgradeWithProxyMsg,extractNameFromKey } from '@remix-ui/helper'
 import { title } from 'process'
 const _paq = (window._paq = window._paq || [])
 
@@ -40,6 +40,7 @@ export function ContractDropdownUI(props: ContractDropdownProps) {
   const [compilerName, setCompilerName] = useState<string>('')
   const contractsRef = useRef<HTMLSelectElement>(null)
   const atAddressValue = useRef<HTMLInputElement>(null)
+  const compileIcon = useRef(null)
   const { contractList, loadType, currentFile, compilationSource, currentContract, compilationCount, deployOptions } = props.contracts
 
   useEffect(() => {
@@ -312,6 +313,17 @@ export function ContractDropdownUI(props: ContractDropdownProps) {
     return props.isValidProxyUpgrade(proxyAddress, loadedContractData.contractName || loadedContractData.name, loadedContractData.compiler.source, loadedContractData.compiler.data)
   }
 
+  const compile = () => {
+    // const currentFile = api.currentFile
+
+    // if (!isSolFileSelected()) return
+    // _setCompilerVersionFromPragma(currentFile)
+    // let externalCompType
+    // if (hhCompilation) externalCompType = 'hardhat'
+    // else if (truffleCompilation) externalCompType = 'truffle'
+    // compileTabLogic.runCompiler(externalCompType)
+  }
+
   const checkSumWarning = () => {
     return (
       <span className="text-start">
@@ -462,25 +474,68 @@ export function ContractDropdownUI(props: ContractDropdownProps) {
         <div className="udapp_deployDropdown">
           {((contractList[currentFile] && contractList[currentFile].filter((contract) => contract)) || []).length > 0 && loadedContractData && (
             <div>
-              <ContractGUI
-                title={intl.formatMessage({ id: 'udapp.deploy' })}
-                isDeploy={true}
-                deployOption={deployOptions[currentFile] && deployOptions[currentFile][currentContract] ? deployOptions[currentFile][currentContract].options : null}
-                initializerOptions={
-                  deployOptions[currentFile] && deployOptions[currentFile][currentContract] ? deployOptions[currentFile][currentContract].initializeOptions : null
-                }
-                funcABI={constructorInterface}
-                clickCallBack={clickCallback}
-                inputs={constructorInputs}
-                widthClass="w-50"
-                evmBC={loadedContractData.bytecodeObject}
-                lookupOnly={false}
-                proxy={props.proxy}
-                isValidProxyAddress={props.isValidProxyAddress}
-                isValidProxyUpgrade={isValidProxyUpgrade}
-                modal={props.modal}
-                disabled={props.selectedAccount === ''}
-              />
+              <div className='d-flex'>
+                <ContractGUI
+                  title={intl.formatMessage({ id: 'udapp.deploy' })}
+                  isDeploy={true}
+                  deployOption={deployOptions[currentFile] && deployOptions[currentFile][currentContract] ? deployOptions[currentFile][currentContract].options : null}
+                  initializerOptions={
+                    deployOptions[currentFile] && deployOptions[currentFile][currentContract] ? deployOptions[currentFile][currentContract].initializeOptions : null
+                  }
+                  funcABI={constructorInterface}
+                  clickCallBack={clickCallback}
+                  inputs={constructorInputs}
+                  widthClass="w-50"
+                  evmBC={loadedContractData.bytecodeObject}
+                  lookupOnly={false}
+                  proxy={props.proxy}
+                  isValidProxyAddress={props.isValidProxyAddress}
+                  isValidProxyUpgrade={isValidProxyUpgrade}
+                  modal={props.modal}
+                  disabled={props.selectedAccount === ''}
+                />
+                <button
+                  id="compileBtn"
+                  data-id="compilerContainerCompileBtn"
+                  className="btn btn-primary btn-block d-block w-100 text-break remixui_disabled mb-1 mt-3"
+                  onClick={compile}
+                  // disabled={(configFilePath === '' && state.useFileConfiguration) || disableCompileButton}
+                >
+                  <CustomTooltip
+                    placement="auto"
+                    tooltipId="overlay-tooltip-compile"
+                    tooltipText={
+                      <div className="text-left">
+                        {/* {!(configFilePath === '' && state.useFileConfiguration) && (
+                    <div>
+                      <b>Ctrl+S</b> <FormattedMessage id="solidity.toCompile" /> {state.compiledFileName.endsWith('.sol') ? state.compiledFileName : null}{' '}
+                    </div>
+                  )}
+                  {configFilePath === '' && state.useFileConfiguration && <div> <FormattedMessage id="solidity.noConfigFileSelected" /></div>} */}
+                      </div>
+                    }
+                  >
+                    <div className="d-flex align-items-center justify-content-center">
+                      {<i ref={compileIcon} className="fas fa-sync mr-2" aria-hidden="true"></i>}
+                      <div className="text-truncate overflow-hidden text-nowrap">
+                        <span>
+                          <FormattedMessage id="solidity.compile" />
+                        </span>
+                        {/* <span className="ml-1 text-nowrap">
+                    {typeof state.compiledFileName === 'string'
+                      ? extractNameFromKey(state.compiledFileName) ||
+                        `<${intl.formatMessage({
+                          id: 'solidity.noFileSelected'
+                        })}>`
+                      : `<${intl.formatMessage({
+                        id: 'solidity.noFileSelected'
+                      })}>`}
+                  </span> */}
+                      </div>
+                    </div>
+                  </CustomTooltip>
+                </button>
+              </div>
               <div className="d-flex py-1 align-items-center custom-control custom-checkbox">
                 <input
                   id="deployAndRunPublishToIPFS"
