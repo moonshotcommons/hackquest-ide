@@ -1,11 +1,16 @@
-import React, {useEffect, useRef, useState} from 'react' // eslint-disable-line
-import {FormattedMessage} from 'react-intl'
-import {PluginRecord} from '../types'
+import React, { useEffect, useRef, useState } from 'react' // eslint-disable-line
+import { FormattedMessage } from 'react-intl'
+import { PluginRecord } from '../types'
 import './panel.css'
-import {CustomTooltip} from '@remix-ui/helper'
+import { CustomTooltip } from '@remix-ui/helper'
+import { Plugin } from '@remixproject/engine'
+// import { SidePanel } from 'apps/remix-ide/src/app'
+
+// SidePanel
 
 export interface RemixPanelProps {
   plugins: Record<string, PluginRecord>
+  sidePlugin: any
 }
 const RemixUIPanelHeader = (props: RemixPanelProps) => {
   const [plugin, setPlugin] = useState<PluginRecord>()
@@ -41,14 +46,25 @@ const RemixUIPanelHeader = (props: RemixPanelProps) => {
               </CustomTooltip>
             )}
           </div>
-          <div className="swapitHeaderInfoSection d-flex justify-content-between" data-id="swapitHeaderInfoSectionId" onClick={toggleClass}>
+          {/* <div className="swapitHeaderInfoSection d-flex justify-content-between" data-id="swapitHeaderInfoSectionId" onClick={toggleClass}>
             <CustomTooltip placement="right-end" tooltipText={<FormattedMessage id="panel.pluginInfo" />} tooltipId="pluginInfoTooltip" tooltipClasses="text-nowrap">
               {tooltipChild}
             </CustomTooltip>
-          </div>
+          </div> */}
+          {/* <div
+            className="swapitHeaderInfoSection d-flex justify-content-between"
+            data-id="swapitHeaderInfoSectionId"
+            onClick={() => {
+              props.sidePlugin.call('layout', 'minimize', plugin.profile.name, !plugin.minimized)
+            }}
+          >
+            <CustomTooltip placement="right-end" tooltipText={<FormattedMessage id="panel.pluginInfo" />} tooltipId="pluginInfoTooltip" tooltipClasses="text-nowrap">
+              {tooltipChild}
+            </CustomTooltip>
+          </div> */}
         </div>
       </div>
-      <div className={`bg-light mx-3 mb-2 p-3 pt-1 border-bottom flex-column ${toggleExpander ? 'd-flex' : 'd-none'}`}>
+      {/* <div className={`bg-light mx-3 mb-2 p-3 pt-1 border-bottom flex-column ${toggleExpander ? 'd-flex' : 'd-none'}`}>
         {plugin?.profile?.author && (
           <span className="d-flex flex-row align-items-center">
             <label className="mb-0 pr-2">
@@ -94,7 +110,7 @@ const RemixUIPanelHeader = (props: RemixPanelProps) => {
             </a>
           </span>
         )}
-      </div>
+      </div> */}
     </header>
   )
 }
