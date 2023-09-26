@@ -6,7 +6,7 @@ import { QueryParams } from '@remix-project/remix-lib'
 const profile: Profile = {
   name: 'layout',
   description: 'layout',
-  methods: ['minimize', 'maximiseSidePanel', 'resetSidePanel', 'maximizeTerminal']
+  methods: ['minimize', 'maximiseSidePanel', 'resetSidePanel', 'maximizeTerminal'],
 }
 
 interface panelState {
@@ -22,8 +22,8 @@ interface panels {
 }
 
 export type PanelConfiguration = {
-  minimizeterminal: boolean,
-  minimizesidepanel: boolean,
+  minimizeterminal: boolean
+  minimizesidepanel: boolean
   embed: boolean
 }
 
@@ -31,13 +31,13 @@ export class Layout extends Plugin {
   event: any
   panels: panels
   maximised: { [key: string]: boolean }
-  constructor () {
+  constructor() {
     super(profile)
     this.maximised = {}
     this.event = new EventEmitter()
   }
 
-  async onActivation (): Promise<void> {
+  async onActivation(): Promise<void> {
     this.on('fileManager', 'currentFileChanged', () => {
       this.panels.editor.active = true
       this.panels.main.active = false
@@ -61,9 +61,9 @@ export class Layout extends Plugin {
     })
     this.on('manager', 'activate', (profile: Profile) => {
       switch (profile.name) {
-      case 'filePanel':
-        this.call('menuicons', 'select', 'filePanel')
-        break
+        case 'solidity':
+          this.call('menuicons', 'select', 'solidity')
+          break
       }
     })
     this.on('sidePanel', 'focusChanged', async (name) => {
@@ -74,7 +74,7 @@ export class Layout extends Plugin {
         this.event.emit('resetsidepanel')
       }
     })
-    document.addEventListener('keypress', e => {
+    document.addEventListener('keypress', (e) => {
       if (e.shiftKey && e.ctrlKey) {
         if (e.code === 'KeyF') {
           // Ctrl+Shift+F
@@ -98,12 +98,12 @@ export class Layout extends Plugin {
     }
   }
 
-  minimize (name: string, minimized:boolean): void {
+  minimize(name: string, minimized: boolean): void {
     this.panels[name].minimized = minimized
     this.event.emit('change', null)
   }
 
-  async maximiseSidePanel () {
+  async maximiseSidePanel() {
     this.event.emit('maximisesidepanel')
     const current = await this.call('sidePanel', 'currentFocus')
     this.maximised[current] = true
@@ -115,7 +115,7 @@ export class Layout extends Plugin {
     this.emit('change', this.panels)
   }
 
-  async resetSidePanel () {
+  async resetSidePanel() {
     this.event.emit('resetsidepanel')
     const current = await this.call('sidePanel', 'currentFocus')
     this.maximised[current] = false
