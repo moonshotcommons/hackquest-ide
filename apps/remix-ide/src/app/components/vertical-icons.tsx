@@ -119,7 +119,6 @@ export class VerticalIcons extends Plugin {
   }
 
   updateComponent(state: any) {
-    console.log(state.icons)
     return <RemixUiVerticalIconsPanel verticalIconsPlugin={state.verticalIconsPlugin} icons={state.icons.filter((icon) => icon.profile.name !== 'filePanel')} />
   }
 

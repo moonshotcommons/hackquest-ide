@@ -5,7 +5,7 @@ import { ContractDropdownProps, DeployMode } from '../types'
 import { ContractData, FuncABI, OverSizeLimit } from '@remix-project/core-plugin'
 import * as ethJSUtil from '@ethereumjs/util'
 import { ContractGUI } from './contractGUI'
-import { CustomTooltip, deployWithProxyMsg, upgradeWithProxyMsg } from '@remix-ui/helper'
+import { CustomTooltip, deployWithProxyMsg, upgradeWithProxyMsg,extractNameFromKey } from '@remix-ui/helper'
 import { title } from 'process'
 const _paq = (window._paq = window._paq || [])
 
@@ -40,6 +40,7 @@ export function ContractDropdownUI(props: ContractDropdownProps) {
   const [compilerName, setCompilerName] = useState<string>('')
   const contractsRef = useRef<HTMLSelectElement>(null)
   const atAddressValue = useRef<HTMLInputElement>(null)
+  const compileIcon = useRef(null)
   const { contractList, loadType, currentFile, compilationSource, currentContract, compilationCount, deployOptions } = props.contracts
 
   useEffect(() => {
@@ -312,6 +313,17 @@ export function ContractDropdownUI(props: ContractDropdownProps) {
     return props.isValidProxyUpgrade(proxyAddress, loadedContractData.contractName || loadedContractData.name, loadedContractData.compiler.source, loadedContractData.compiler.data)
   }
 
+  const compile = () => {
+    // const currentFile = api.currentFile
+
+    // if (!isSolFileSelected()) return
+    // _setCompilerVersionFromPragma(currentFile)
+    // let externalCompType
+    // if (hhCompilation) externalCompType = 'hardhat'
+    // else if (truffleCompilation) externalCompType = 'truffle'
+    // compileTabLogic.runCompiler(externalCompType)
+  }
+
   const checkSumWarning = () => {
     return (
       <span className="text-start">
@@ -462,25 +474,27 @@ export function ContractDropdownUI(props: ContractDropdownProps) {
         <div className="udapp_deployDropdown">
           {((contractList[currentFile] && contractList[currentFile].filter((contract) => contract)) || []).length > 0 && loadedContractData && (
             <div>
-              <ContractGUI
-                title={intl.formatMessage({ id: 'udapp.deploy' })}
-                isDeploy={true}
-                deployOption={deployOptions[currentFile] && deployOptions[currentFile][currentContract] ? deployOptions[currentFile][currentContract].options : null}
-                initializerOptions={
-                  deployOptions[currentFile] && deployOptions[currentFile][currentContract] ? deployOptions[currentFile][currentContract].initializeOptions : null
-                }
-                funcABI={constructorInterface}
-                clickCallBack={clickCallback}
-                inputs={constructorInputs}
-                widthClass="w-50"
-                evmBC={loadedContractData.bytecodeObject}
-                lookupOnly={false}
-                proxy={props.proxy}
-                isValidProxyAddress={props.isValidProxyAddress}
-                isValidProxyUpgrade={isValidProxyUpgrade}
-                modal={props.modal}
-                disabled={props.selectedAccount === ''}
-              />
+              <div className='d-flex'>
+                <ContractGUI
+                  title={intl.formatMessage({ id: 'udapp.deploy' })}
+                  isDeploy={true}
+                  deployOption={deployOptions[currentFile] && deployOptions[currentFile][currentContract] ? deployOptions[currentFile][currentContract].options : null}
+                  initializerOptions={
+                    deployOptions[currentFile] && deployOptions[currentFile][currentContract] ? deployOptions[currentFile][currentContract].initializeOptions : null
+                  }
+                  funcABI={constructorInterface}
+                  clickCallBack={clickCallback}
+                  inputs={constructorInputs}
+                  widthClass="w-50"
+                  evmBC={loadedContractData.bytecodeObject}
+                  lookupOnly={false}
+                  proxy={props.proxy}
+                  isValidProxyAddress={props.isValidProxyAddress}
+                  isValidProxyUpgrade={isValidProxyUpgrade}
+                  modal={props.modal}
+                  disabled={props.selectedAccount === ''}
+                />
+              </div>
               <div className="d-flex py-1 align-items-center custom-control custom-checkbox">
                 <input
                   id="deployAndRunPublishToIPFS"
