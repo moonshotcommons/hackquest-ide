@@ -10,6 +10,7 @@ import { title } from 'process'
 const _paq = (window._paq = window._paq || [])
 
 export function ContractDropdownUI(props: ContractDropdownProps) {
+  console.info(props,'props')
   const intl = useIntl()
   const [abiLabel, setAbiLabel] = useState<{
     display: string
@@ -494,47 +495,6 @@ export function ContractDropdownUI(props: ContractDropdownProps) {
                   modal={props.modal}
                   disabled={props.selectedAccount === ''}
                 />
-                <button
-                  id="compileBtn"
-                  data-id="compilerContainerCompileBtn"
-                  className="btn btn-primary btn-block d-block w-100 text-break remixui_disabled mb-1 mt-3"
-                  onClick={compile}
-                  // disabled={(configFilePath === '' && state.useFileConfiguration) || disableCompileButton}
-                >
-                  <CustomTooltip
-                    placement="auto"
-                    tooltipId="overlay-tooltip-compile"
-                    tooltipText={
-                      <div className="text-left">
-                        {/* {!(configFilePath === '' && state.useFileConfiguration) && (
-                    <div>
-                      <b>Ctrl+S</b> <FormattedMessage id="solidity.toCompile" /> {state.compiledFileName.endsWith('.sol') ? state.compiledFileName : null}{' '}
-                    </div>
-                  )}
-                  {configFilePath === '' && state.useFileConfiguration && <div> <FormattedMessage id="solidity.noConfigFileSelected" /></div>} */}
-                      </div>
-                    }
-                  >
-                    <div className="d-flex align-items-center justify-content-center">
-                      {<i ref={compileIcon} className="fas fa-sync mr-2" aria-hidden="true"></i>}
-                      <div className="text-truncate overflow-hidden text-nowrap">
-                        <span>
-                          <FormattedMessage id="solidity.compile" />
-                        </span>
-                        {/* <span className="ml-1 text-nowrap">
-                    {typeof state.compiledFileName === 'string'
-                      ? extractNameFromKey(state.compiledFileName) ||
-                        `<${intl.formatMessage({
-                          id: 'solidity.noFileSelected'
-                        })}>`
-                      : `<${intl.formatMessage({
-                        id: 'solidity.noFileSelected'
-                      })}>`}
-                  </span> */}
-                      </div>
-                    </div>
-                  </CustomTooltip>
-                </button>
               </div>
               <div className="d-flex py-1 align-items-center custom-control custom-checkbox">
                 <input
