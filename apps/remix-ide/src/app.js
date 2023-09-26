@@ -301,7 +301,7 @@ class AppComponent {
       injectedEphemeryTestnetProvider,
       injectedSKALEChaosTestnetProvider,
       this.walkthroughService,
-      search,
+      // search,
       solidityumlgen,
       contractFlattener,
       solidityScript,
@@ -330,8 +330,8 @@ class AppComponent {
       this.hiddenPanel,
       this.sidePanel,
       filePanel,
-      pluginManagerComponent,
-      this.settings,
+      // pluginManagerComponent,
+      // this.settings,
     ])
 
     // CONTENT VIEWS & DEFAULT PLUGINS
@@ -363,7 +363,7 @@ class AppComponent {
     this.engine.register([
       compileTab,
       run,
-      debug,
+      // debug,
       analysis,
       test,
       filePanel.remixdHandle,
@@ -415,10 +415,13 @@ class AppComponent {
     ])
     await this.appManager.activatePlugin(['sidePanel']) // activating  host plugin separately
     // await this.appManager.activatePlugin(['home'])
-    await this.appManager.activatePlugin(['settings', 'config'])
+    await this.appManager.activatePlugin([
+      // 'settings',
+      'config',
+    ])
     await this.appManager.activatePlugin([
       'hiddenPanel',
-      'pluginManager',
+      // 'pluginManager',
       'codeParser',
       'codeFormatter',
       'fileDecorator',
@@ -428,8 +431,14 @@ class AppComponent {
       'contentImport',
       'gistHandler',
     ])
-    await this.appManager.activatePlugin(['settings'])
-    await this.appManager.activatePlugin(['walkthrough', 'storage', 'search', 'compileAndRun', 'recorder'])
+    // await this.appManager.activatePlugin(['settings'])
+    await this.appManager.activatePlugin([
+      'walkthrough',
+      'storage',
+      // 'search',
+      'compileAndRun',
+      'recorder',
+    ])
     await this.appManager.activatePlugin(['solidity-script', 'openaigpt'])
 
     this.appManager.on('filePanel', 'workspaceInitializationCompleted', async () => {

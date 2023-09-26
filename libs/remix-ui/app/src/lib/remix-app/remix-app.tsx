@@ -85,8 +85,8 @@ const RemixApp = (props: IRemixAppUi) => {
     //@ts-ignore
     <IntlProvider locale={locale.code} messages={locale.messages}>
       <AppProvider value={value}>
-        <OriginWarning></OriginWarning>
-        <MatomoDialog hide={!appReady}></MatomoDialog>
+        {/* <OriginWarning></OriginWarning> */}
+        {/* <MatomoDialog hide={!appReady}></MatomoDialog> */}
         <div className="hackquest-header">
           <h1 className="hackquest-header-text">HackQuest IDE</h1>
         </div>
