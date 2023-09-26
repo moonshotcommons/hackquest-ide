@@ -7,7 +7,7 @@ import {CopyToClipboard} from '@remix-ui/clipboard' // eslint-disable-line
 import {saveAs} from 'file-saver'
 
 import './css/style.css'
-import {CustomTooltip} from '@remix-ui/helper'
+// import {CustomTooltip} from '@remix-ui/helper'
 const _paq = (window._paq = window._paq || [])
 
 export const ContractSelection = (props: ContractSelectionProps) => {
