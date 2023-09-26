@@ -802,13 +802,13 @@ export const CompilerContainer = (props: CompilerContainerProps) => {
               })}
             </select>
           </div>
-          <div className="mb-2 flex-row-reverse remixui_nightlyBuilds custom-control custom-checkbox">
+          {/* <div className="mb-2 flex-row-reverse remixui_nightlyBuilds custom-control custom-checkbox">
             <input className="mr-2 custom-control-input" id="nightlies" type="checkbox" onChange={handleNightliesChange} checked={state.includeNightlies} />
             <label htmlFor="nightlies" data-id="compilerNightliesBuild" className="form-check-label custom-control-label">
               <FormattedMessage id="solidity.includeNightlyBuilds" />
             </label>
-          </div>
-          <div className="mt-2 remixui_compilerConfig custom-control custom-checkbox">
+          </div> */}
+          {/* <div className="mt-2 remixui_compilerConfig custom-control custom-checkbox">
             <input
               className="remixui_autocompile custom-control-input"
               type="checkbox"
@@ -834,7 +834,7 @@ export const CompilerContainer = (props: CompilerContainerProps) => {
             <label className="form-check-label custom-control-label" htmlFor="hideWarningsBox">
               <FormattedMessage id="solidity.hideWarnings" />
             </label>
-          </div>
+          </div> */}
           {isHardhatProject && (
             <div className="mt-3 remixui_compilerConfig custom-control custom-checkbox">
               <input
@@ -894,184 +894,187 @@ export const CompilerContainer = (props: CompilerContainerProps) => {
             </div>
           )}
         </div>
-        <div className="d-flex px-4 remixui_compilerConfigSection justify-content-between" onClick={toggleConfigurations}>
-          <div className="d-flex">
-            <label className="mt-1 remixui_compilerConfigSection">
-              <FormattedMessage id="solidity.advancedConfigurations" />
-            </label>
-          </div>
-          <div>
-            <span data-id="scConfigExpander" onClick={toggleConfigurations}>
-              <i className={!toggleExpander ? 'fas fa-angle-right' : 'fas fa-angle-down'} aria-hidden="true"></i>
-            </span>
-          </div>
-        </div>
-        <div className={`px-4 pb-4 border-bottom flex-column ${toggleExpander ? 'd-flex' : 'd-none'}`}>
-          <div className="d-flex pb-1 remixui_compilerConfig custom-control custom-radio">
-            <input
-              className="custom-control-input"
-              type="radio"
-              name="configradio"
-              value="manual"
-              onChange={toggleConfigType}
-              checked={!state.useFileConfiguration}
-              id="scManualConfig"
-            />
-            <label className="form-check-label custom-control-label" htmlFor="scManualConfig" data-id="scManualConfiguration">
-              <FormattedMessage id="solidity.compilerConfiguration" />
-            </label>
-          </div>
-          <div className={`flex-column 'd-flex'}`}>
-            <div className="mb-2 ml-4">
-              <label className="remixui_compilerLabel form-check-label" htmlFor="compilierLanguageSelector">
-                <FormattedMessage id="solidity.language" />
+        <div className='d-none'>
+          <div className="d-flex px-4 remixui_compilerConfigSection justify-content-between" onClick={toggleConfigurations}>
+            <div className="d-flex">
+              <label className="mt-1 remixui_compilerConfigSection">
+                <FormattedMessage id="solidity.advancedConfigurations" />
               </label>
-              <CustomTooltip
-                placement="right"
-                tooltipId="compilerLabelTooltip"
-                tooltipClasses="text-nowrap"
-                tooltipText={
-                  <span>
-                    <FormattedMessage id="solidity.tooltipText6" />
-                  </span>
-                }
-              >
-                <div id="compilerLanguageSelectorWrapper">
-                  <select
-                    onChange={(e) => handleLanguageChange(e.target.value)}
-                    disabled={state.useFileConfiguration}
-                    value={state.language}
-                    className="custom-select"
-                    id="compilierLanguageSelector"
-                    style={{
-                      pointerEvents: state.useFileConfiguration ? 'none' : 'auto'
-                    }}
-                  >
-                    <option data-id={state.language === 'Solidity' ? 'selected' : ''} value="Solidity">
-                      Solidity
-                    </option>
-                    <option data-id={state.language === 'Yul' ? 'selected' : ''} value="Yul">
-                      Yul
-                    </option>
-                  </select>
-                </div>
-              </CustomTooltip>
             </div>
-            <div className="mb-2 ml-4">
-              <label className="remixui_compilerLabel form-check-label" htmlFor="evmVersionSelector">
-                <FormattedMessage id="solidity.evmVersion" />
+            <div>
+              <span data-id="scConfigExpander" onClick={toggleConfigurations}>
+                <i className={!toggleExpander ? 'fas fa-angle-right' : 'fas fa-angle-down'} aria-hidden="true"></i>
+              </span>
+            </div>
+          </div>
+          <div className={`px-4 pb-4 border-bottom flex-column ${toggleExpander ? 'd-flex' : 'd-none'}`}>
+            <div className="d-flex pb-1 remixui_compilerConfig custom-control custom-radio">
+              <input
+                className="custom-control-input"
+                type="radio"
+                name="configradio"
+                value="manual"
+                onChange={toggleConfigType}
+                checked={!state.useFileConfiguration}
+                id="scManualConfig"
+              />
+              <label className="form-check-label custom-control-label" htmlFor="scManualConfig" data-id="scManualConfiguration">
+                <FormattedMessage id="solidity.compilerConfiguration" />
               </label>
-              <select
-                value={state.evmVersion}
-                onChange={(e) => handleEvmVersionChange(e.target.value)}
-                disabled={state.useFileConfiguration}
-                className="custom-select"
-                id="evmVersionSelector"
-              >
-                {compileTabLogic.evmVersions.map((version, index) => (
-                  <option key={index} data-id={state.evmVersion === version ? 'selected' : ''} value={version}>
-                    {version}
-                  </option>
-                ))}
-              </select>
             </div>
-            <div className="mt-1 mt-3 border-dark pb-3 ml-4 remixui_compilerConfig custom-control custom-checkbox">
-              <div className="justify-content-between align-items-center d-flex">
-                <input
-                  onChange={(e) => {
-                    handleOptimizeChange(e.target.checked)
-                  }}
-                  disabled={state.useFileConfiguration}
-                  className="custom-control-input"
-                  id="optimize"
-                  type="checkbox"
-                  checked={state.optimize}
-                />
-                <label className="form-check-label custom-control-label" htmlFor="optimize">
-                  <FormattedMessage id="solidity.enableOptimization" />
+            <div className={`flex-column 'd-flex'}`}>
+              <div className="mb-2 ml-4">
+                <label className="remixui_compilerLabel form-check-label" htmlFor="compilierLanguageSelector">
+                  <FormattedMessage id="solidity.language" />
                 </label>
-                <input
-                  min="1"
-                  className="custom-select ml-2 remixui_runs"
-                  id="runs"
-                  placeholder="200"
-                  value={state.runs}
-                  type="number"
-                  title={intl.formatMessage({id: 'solidity.inputTitle2'})}
-                  onChange={(e) => onChangeRuns(e.target.value)}
-                  disabled={!state.optimize || state.useFileConfiguration}
-                />
+                <CustomTooltip
+                  placement="right"
+                  tooltipId="compilerLabelTooltip"
+                  tooltipClasses="text-nowrap"
+                  tooltipText={
+                    <span>
+                      <FormattedMessage id="solidity.tooltipText6" />
+                    </span>
+                  }
+                >
+                  <div id="compilerLanguageSelectorWrapper">
+                    <select
+                      onChange={(e) => handleLanguageChange(e.target.value)}
+                      disabled={state.useFileConfiguration}
+                      value={state.language}
+                      className="custom-select"
+                      id="compilierLanguageSelector"
+                      style={{
+                        pointerEvents: state.useFileConfiguration ? 'none' : 'auto'
+                      }}
+                    >
+                      <option data-id={state.language === 'Solidity' ? 'selected' : ''} value="Solidity">
+                      Solidity
+                      </option>
+                      <option data-id={state.language === 'Yul' ? 'selected' : ''} value="Yul">
+                      Yul
+                      </option>
+                    </select>
+                  </div>
+                </CustomTooltip>
+              </div>
+              <div className="mb-2 ml-4">
+                <label className="remixui_compilerLabel form-check-label" htmlFor="evmVersionSelector">
+                  <FormattedMessage id="solidity.evmVersion" />
+                </label>
+                <select
+                  value={state.evmVersion}
+                  onChange={(e) => handleEvmVersionChange(e.target.value)}
+                  disabled={state.useFileConfiguration}
+                  className="custom-select"
+                  id="evmVersionSelector"
+                >
+                  {compileTabLogic.evmVersions.map((version, index) => (
+                    <option key={index} data-id={state.evmVersion === version ? 'selected' : ''} value={version}>
+                      {version}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="mt-1 mt-3 border-dark pb-3 ml-4 remixui_compilerConfig custom-control custom-checkbox">
+                <div className="justify-content-between align-items-center d-flex">
+                  <input
+                    onChange={(e) => {
+                      handleOptimizeChange(e.target.checked)
+                    }}
+                    disabled={state.useFileConfiguration}
+                    className="custom-control-input"
+                    id="optimize"
+                    type="checkbox"
+                    checked={state.optimize}
+                  />
+                  <label className="form-check-label custom-control-label" htmlFor="optimize">
+                    <FormattedMessage id="solidity.enableOptimization" />
+                  </label>
+                  <input
+                    min="1"
+                    className="custom-select ml-2 remixui_runs"
+                    id="runs"
+                    placeholder="200"
+                    value={state.runs}
+                    type="number"
+                    title={intl.formatMessage({id: 'solidity.inputTitle2'})}
+                    onChange={(e) => onChangeRuns(e.target.value)}
+                    disabled={!state.optimize || state.useFileConfiguration}
+                  />
+                </div>
               </div>
             </div>
-          </div>
-          <div className="d-flex pb-1 remixui_compilerConfig custom-control custom-radio">
-            <input
-              className="custom-control-input"
-              type="radio"
-              name="configradio"
-              value="file"
-              onChange={toggleConfigType}
-              checked={state.useFileConfiguration}
-              id="scFileConfig"
-            />
-            <label className="form-check-label custom-control-label" htmlFor="scFileConfig" data-id="scFileConfiguration">
-              <FormattedMessage id="solidity.useConfigurationFile" />
-            </label>
-          </div>
-          <div className={`pt-2 ml-4 ml-2 align-items-start justify-content-between d-flex`}>
-            {!showFilePathInput && state.useFileConfiguration && (
-              <CustomTooltip
-                placement="bottom"
-                tooltipId="configfileTooltip"
-                tooltipClasses="text-nowrap"
-                tooltipText={
-                  <span>
-                    <FormattedMessage id="solidity.tooltipText4" />
-                  </span>
-                }
-              >
-                <span
-                  onClick={
-                    configFilePath === ''
-                      ? () => {}
-                      : async () => {
-                        await openFile()
-                      }
+            <div className="d-flex pb-1 remixui_compilerConfig custom-control custom-radio">
+              <input
+                className="custom-control-input"
+                type="radio"
+                name="configradio"
+                value="file"
+                onChange={toggleConfigType}
+                checked={state.useFileConfiguration}
+                id="scFileConfig"
+              />
+              <label className="form-check-label custom-control-label" htmlFor="scFileConfig" data-id="scFileConfiguration">
+                <FormattedMessage id="solidity.useConfigurationFile" />
+              </label>
+            </div>
+            <div className={`pt-2 ml-4 ml-2 align-items-start justify-content-between d-flex`}>
+              {!showFilePathInput && state.useFileConfiguration && (
+                <CustomTooltip
+                  placement="bottom"
+                  tooltipId="configfileTooltip"
+                  tooltipClasses="text-nowrap"
+                  tooltipText={
+                    <span>
+                      <FormattedMessage id="solidity.tooltipText4" />
+                    </span>
                   }
-                  className="py-2 remixui_compilerConfigPath"
                 >
-                  {configFilePath === '' ? intl.formatMessage({id: 'solidity.noFileSelected1'}) : configFilePath}
-                </span>
-              </CustomTooltip>
-            )}
-            {!showFilePathInput && !state.useFileConfiguration && <span className="py-2 text-secondary">{configFilePath}</span>}
-            <input
-              ref={configFilePathInput}
-              className={`py-0 my-0 form-control ${showFilePathInput ? 'd-flex' : 'd-none'}`}
-              placeholder={'/folder_path/file_name.json'}
-              title={intl.formatMessage({id: 'solidity.inputTitle1'})}
-              disabled={!state.useFileConfiguration}
-              data-id="scConfigFilePathInput"
-              onKeyPress={(event) => {
-                if (event.key === 'Enter') {
-                  handleConfigPathChange()
-                }
-              }}
-            />
-            {!showFilePathInput && (
-              <button
+                  <span
+                    onClick={
+                      configFilePath === ''
+                        ? () => {}
+                        : async () => {
+                          await openFile()
+                        }
+                    }
+                    className="py-2 remixui_compilerConfigPath"
+                  >
+                    {configFilePath === '' ? intl.formatMessage({id: 'solidity.noFileSelected1'}) : configFilePath}
+                  </span>
+                </CustomTooltip>
+              )}
+              {!showFilePathInput && !state.useFileConfiguration && <span className="py-2 text-secondary">{configFilePath}</span>}
+              <input
+                ref={configFilePathInput}
+                className={`py-0 my-0 form-control ${showFilePathInput ? 'd-flex' : 'd-none'}`}
+                placeholder={'/folder_path/file_name.json'}
+                title={intl.formatMessage({id: 'solidity.inputTitle1'})}
                 disabled={!state.useFileConfiguration}
-                data-id="scConfigChangeFilePath"
-                className="btn btn-sm btn-secondary"
-                onClick={() => {
-                  setShowFilePathInput(true)
+                data-id="scConfigFilePathInput"
+                onKeyPress={(event) => {
+                  if (event.key === 'Enter') {
+                    handleConfigPathChange()
+                  }
                 }}
-              >
-                <FormattedMessage id="solidity.change" />
-              </button>
-            )}
+              />
+              {!showFilePathInput && (
+                <button
+                  disabled={!state.useFileConfiguration}
+                  data-id="scConfigChangeFilePath"
+                  className="btn btn-sm btn-secondary"
+                  onClick={() => {
+                    setShowFilePathInput(true)
+                  }}
+                >
+                  <FormattedMessage id="solidity.change" />
+                </button>
+              )}
+            </div>
           </div>
         </div>
+        
         <div className="px-4">
           <button
             id="compileBtn"
@@ -1114,7 +1117,7 @@ export const CompilerContainer = (props: CompilerContainerProps) => {
               </div>
             </CustomTooltip>
           </button>
-          <div className="d-flex align-items-center">
+          {/* <div className="d-flex align-items-center">
             <button
               id="compileAndRunBtn"
               data-id="compilerContainerCompileAndRunBtn"
@@ -1149,16 +1152,6 @@ export const CompilerContainer = (props: CompilerContainerProps) => {
                   <div><FormattedMessage id="solidity.tooltipText1" /></div>
                   <pre>
                     <code>
-                      /**
-                      <br />
-                      * @title ContractName
-                      <br />
-                      * @dev ContractDescription
-                      <br />
-                      * @custom:dev-run-script file_path
-                      <br />
-                      */
-                      <br />
                       contract ContractName {'{}'}
                       <br />
                     </code>
@@ -1176,7 +1169,7 @@ export const CompilerContainer = (props: CompilerContainerProps) => {
                 <i className="remixui_copyIcon far fa-copy" aria-hidden="true"></i>
               </button>
             </CopyToClipboard>
-          </div>
+          </div> */}
         </div>
       </article>
     </section>

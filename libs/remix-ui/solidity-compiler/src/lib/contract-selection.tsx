@@ -239,7 +239,7 @@ export const ContractSelection = (props: ContractSelectionProps) => {
       {contractList.length ? (
         <section className="remixui_compilerSection pt-3">
           {/* Select Compiler Version */}
-          <div className="mb-3">
+          {/* <div className="mb-3">
             <label className="remixui_compilerLabel form-check-label" htmlFor="compiledContracts">
               <FormattedMessage id="solidity.contract" />
             </label>
@@ -250,9 +250,9 @@ export const ContractSelection = (props: ContractSelectionProps) => {
                 </option>
               ))}
             </select>
-          </div>
+          </div> */}
           <article className="mt-2 pb-0">
-            <button
+            {/* <button
               id="publishOnIpfs"
               className="btn btn-secondary btn-block"
               onClick={() => {
@@ -315,7 +315,7 @@ export const ContractSelection = (props: ContractSelectionProps) => {
                   <FormattedMessage id="solidity.compilationDetails" />
                 </span>
               </CustomTooltip>
-            </button>
+            </button> */}
             {/* Copy to Clipboard */}
             <div className="remixui_contractHelperButtons">
               <div className="input-group">
@@ -346,7 +346,7 @@ export const ContractSelection = (props: ContractSelectionProps) => {
           </article>
         </section>
       )}
-      <PublishToStorage api={api} storage={storage} contract={contractsDetails[selectedContract]} resetStorage={resetStorage} />
+      {/* <PublishToStorage api={api} storage={storage} contract={contractsDetails[selectedContract]} resetStorage={resetStorage} /> */}
     </>
   )
 }
