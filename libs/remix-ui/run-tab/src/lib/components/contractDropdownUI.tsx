@@ -10,7 +10,6 @@ import { title } from 'process'
 const _paq = (window._paq = window._paq || [])
 
 export function ContractDropdownUI(props: ContractDropdownProps) {
-  console.info(props,'props')
   const intl = useIntl()
   const [abiLabel, setAbiLabel] = useState<{
     display: string
