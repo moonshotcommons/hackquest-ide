@@ -331,7 +331,7 @@ class AppComponent {
       this.sidePanel,
       filePanel,
       // pluginManagerComponent,
-      // this.settings,
+      this.settings,
     ])
 
     // CONTENT VIEWS & DEFAULT PLUGINS

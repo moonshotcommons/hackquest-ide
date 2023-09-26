@@ -86,7 +86,6 @@ export class SidePanel extends AbstractPanel {
   render() {
     return (
       <section className="panel plugin-manager">
-        {' '}
         <PluginViewWrapper plugin={this} />
       </section>
     )
