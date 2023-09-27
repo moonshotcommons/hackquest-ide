@@ -5,6 +5,7 @@ import { ContractSelection } from './contract-selection' // eslint-disable-line
 import { Toaster } from '@remix-ui/toaster' // eslint-disable-line
 import { ModalDialog } from '@remix-ui/modal-dialog' // eslint-disable-line
 import { Renderer } from '@remix-ui/renderer' // eslint-disable-line
+import './solidity-compiler.css'
 
 import './css/style.css'
 import './css/hack.style.css'
@@ -110,11 +111,11 @@ export const SolidityCompiler = (props: SolidityCompilerProps) => {
     const { contractMap, contractsDetails, target, input } = compilationDetails
     const contractList = contractMap
       ? Object.keys(contractMap).map((key) => {
-          return {
-            name: key,
-            file: getFileName(contractMap[key].file),
-          }
-        })
+        return {
+          name: key,
+          file: getFileName(contractMap[key].file),
+        }
+      })
       : []
 
     setContractsFile({
@@ -220,7 +221,6 @@ export const SolidityCompiler = (props: SolidityCompilerProps) => {
           configFilePath={state.configFilePath}
           setConfigFilePath={setConfigFilePath}
         />
-
         {contractsFile[currentFile] && contractsFile[currentFile].contractsDetails && (
           <ContractSelection
             api={api}
@@ -232,7 +232,7 @@ export const SolidityCompiler = (props: SolidityCompilerProps) => {
           />
         )}
         {compileErrors[currentFile] && (
-          <div className="remixui_errorBlobs p-4" data-id="compiledErrors">
+          <div className="remixui_errorBlobs" data-id="compiledErrors">
             <>
               <span data-id={`compilationFinishedWith_${currentVersion}`}></span>
               {compileErrors[currentFile].error && (

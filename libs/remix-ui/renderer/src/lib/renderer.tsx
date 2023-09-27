@@ -87,17 +87,19 @@ export const Renderer = ({message, opt = {}, plugin}: RendererProps) => {
       {messageText && !close && (
         <div className={`remixui_sol ${editorOptions.type} ${classList}`} data-id={editorOptions.errFile} onClick={() => handleErrorClick(editorOptions)}>
           {editorOptions.useSpan ? (
-            <span> {messageText} </span>
+            <span> {messageText}</span>
           ) : (
             <pre>
+              <i className="fas fa-exclamation waning-icon"></i>
+              {/* <i className="fa-solid fa-code"></i> */}
               <span>{messageText}</span>
             </pre>
           )}
           <div className="close" data-id="renderer" onClick={handleClose}>
             <i className="fas fa-times"></i>
           </div>
-          <CopyToClipboard content={messageText} className={` p-0 m-0 far fa-copy ${classList}`} direction={'top'} />
-          <span onClick={() => { askGtp() }}>ASK GPT</span>
+          {/* <CopyToClipboard content={messageText} className={` p-0 m-0 far fa-copy ${classList}`} direction={'top'} /> */}
+          {/* <span onClick={() => { askGtp() }}>ASK GPT</span> */}
         </div>
       )}
     </>

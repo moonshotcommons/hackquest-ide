@@ -5,6 +5,7 @@ import {PublishToStorage} from '@remix-ui/publish-to-storage' // eslint-disable-
 import {TreeView, TreeViewItem} from '@remix-ui/tree-view' // eslint-disable-line
 import {CopyToClipboard} from '@remix-ui/clipboard' // eslint-disable-line
 import {saveAs} from 'file-saver'
+import './contract-selection.css'
 
 import './css/style.css'
 // import {CustomTooltip} from '@remix-ui/helper'
@@ -236,8 +237,8 @@ export const ContractSelection = (props: ContractSelectionProps) => {
   return (
     // define swarm logo
     <>
-      {contractList.length ? (
-        <section className="remixui_compilerSection pt-3">
+      {contractList?.length ? (
+        <section className="remixui_compilerSection">
           {/* Select Compiler Version */}
           {/* <div className="mb-3">
             <label className="remixui_compilerLabel form-check-label" htmlFor="compiledContracts">
@@ -251,7 +252,7 @@ export const ContractSelection = (props: ContractSelectionProps) => {
               ))}
             </select>
           </div> */}
-          <article className="mt-2 pb-0">
+          <article className="pb-0">
             {/* <button
               id="publishOnIpfs"
               className="btn btn-secondary btn-block"
@@ -339,8 +340,8 @@ export const ContractSelection = (props: ContractSelectionProps) => {
         </section>
       ) : (
         <section className="remixui_container clearfix">
-          <article className="px-2 mt-2 pb-0 d-flex w-100">
-            <span className="mt-2 mx-3 w-100 alert alert-warning" role="alert">
+          <article className="mt-2 pb-0 d-flex w-100">
+            <span className="mt-2 w-100 alert alert-warning" role="alert">
               <FormattedMessage id="solidity.noContractCompiled" />
             </span>
           </article>

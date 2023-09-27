@@ -70,7 +70,7 @@
   margin: 0;
 }
 .remixui_compilerSection {
-  padding: 12px 24px 16px;
+  /* padding: 12px 24px 16px; */
 }
 .remixui_compilerConfigSection:hover {
   cursor: pointer;
@@ -83,9 +83,10 @@
 }
 .remixui_compilerLabel {
   margin-bottom: 2px;
-  font-size: 11px;
+  font-size: 16px;
   line-height: 12px;
-  text-transform: uppercase;
+  text-transform: capitalize;
+  color: #8C8C8C;
 }
 .remixui_copyButton {
   padding: 6px;

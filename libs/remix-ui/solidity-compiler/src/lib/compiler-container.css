@@ -1,0 +1,21 @@
+.complie-content .remixui_compilerSection_label {
+  color: #8c8c8c;
+  margin-bottom: 5px;
+
+}
+.complie-content .custom-select {
+  background-color: rgba(140, 140, 140, 0.15);
+  border-radius: 3px;
+}
+.complie-content .compile-btn {
+  margin-top: 12px;
+  width: 89px;
+  height: 27px;
+  color:#0B0B0B;
+  font-size: 12px;
+  letter-spacing: 0.24px;
+  background: #FFD850;
+  border-radius: 32px;
+  border:none;
+  outline: none;
+}
