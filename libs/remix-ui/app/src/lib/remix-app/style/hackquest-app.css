@@ -1,4 +1,7 @@
-/* @import url('./font.css'); */
+@import url('./font.css');
+body {
+  font-family: 'NEXT Book';
+}
 #root > .hackquestIDE {
   width: 100%;
   height: calc(100vh - 64px - 30px) !important;
