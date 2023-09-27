@@ -1,0 +1,13 @@
+#root > .hackquestIDE {
+  width: 100%;
+  height: calc(100vh - 64px - 30px) !important;
+  overflow: hidden;
+  flex-direction: row;
+  display: flex;
+}
+
+.hack-main-panel {
+  padding: 20px;
+  padding-left: 0;
+  margin: 0;
+}
