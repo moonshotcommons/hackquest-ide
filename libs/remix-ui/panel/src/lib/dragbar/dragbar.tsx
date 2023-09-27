@@ -15,7 +15,7 @@ const DragBar = (props: IRemixDragBarUi) => {
   const [dragBarPosY, setDragBarPosY] = useState<number>(0)
   const nodeRef = React.useRef(null) // fix for strictmode
 
-  const topHeight = 62 + 20
+  const topHeight = 64 + 20 + 40 + 8
 
   function stopDrag(e: MouseEvent, data: any) {
     const h = window.innerHeight - topHeight - data.y

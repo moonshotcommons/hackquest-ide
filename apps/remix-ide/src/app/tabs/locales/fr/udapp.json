@@ -1,5 +1,5 @@
 {
-  "udapp.displayName": "Deploy & run transactions",
+  "udapp.displayName": "Deploy & run",
   "udapp.gasLimit": "Gas limit",
   "udapp.account": "Account",
   "udapp.value": "Value",

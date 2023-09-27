@@ -65,7 +65,7 @@ const RemixUiVerticalIconsPanel = ({ verticalIconsPlugin, icons }: RemixUiVertic
   return (
     <div id="iconsP" className="h-100">
       <div className="remixui_icons d-flex flex-column vh-100" ref={iconPanelRef}>
-        <Home verticalIconPlugin={verticalIconsPlugin} />
+        {/* <Home verticalIconPlugin={verticalIconsPlugin} /> */}
         <div
           className={
             scrollableRef.current && scrollableRef.current.scrollHeight > scrollableRef.current.clientHeight

@@ -5,7 +5,7 @@ import { ContractDropdownProps, DeployMode } from '../types'
 import { ContractData, FuncABI, OverSizeLimit } from '@remix-project/core-plugin'
 import * as ethJSUtil from '@ethereumjs/util'
 import { ContractGUI } from './contractGUI'
-import { CustomTooltip, deployWithProxyMsg, upgradeWithProxyMsg,extractNameFromKey } from '@remix-ui/helper'
+import { CustomTooltip, deployWithProxyMsg, upgradeWithProxyMsg, extractNameFromKey } from '@remix-ui/helper'
 import { title } from 'process'
 const _paq = (window._paq = window._paq || [])
 
@@ -315,7 +315,6 @@ export function ContractDropdownUI(props: ContractDropdownProps) {
 
   const compile = () => {
     // const currentFile = api.currentFile
-
     // if (!isSolFileSelected()) return
     // _setCompilerVersionFromPragma(currentFile)
     // let externalCompType
@@ -384,7 +383,7 @@ export function ContractDropdownUI(props: ContractDropdownProps) {
     evmVersion = JSON.parse(loadedContractData.metadata).settings.evmVersion
   } catch (err) {}
   return (
-    <div className="udapp_container mb-2" data-id="contractDropdownContainer">
+    <div className="udapp_container mb-2 hack-udapp_container" data-id="contractDropdownContainer">
       <div className="d-flex justify-content-between">
         <div className="d-flex justify-content-between align-items-end">
           <label className="udapp_settingsLabel pr-1">
@@ -474,7 +473,7 @@ export function ContractDropdownUI(props: ContractDropdownProps) {
         <div className="udapp_deployDropdown">
           {((contractList[currentFile] && contractList[currentFile].filter((contract) => contract)) || []).length > 0 && loadedContractData && (
             <div>
-              <div className='d-flex'>
+              <div className="d-flex">
                 <ContractGUI
                   title={intl.formatMessage({ id: 'udapp.deploy' })}
                   isDeploy={true}
