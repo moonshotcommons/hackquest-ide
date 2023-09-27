@@ -11,3 +11,12 @@
   padding-left: 0;
   margin: 0;
 }
+
+.hackquestIDE > .hack-icon-panel {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 60px;
+  user-select: none;
+  background-color: #dadada !important;
+}

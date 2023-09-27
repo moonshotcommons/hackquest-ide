@@ -92,7 +92,7 @@ const RemixApp = (props: IRemixAppUi) => {
         {/* <MatomoDialog hide={!appReady}></MatomoDialog> */}
         <HackquestHeader></HackquestHeader>
         <div className={`remixIDE hackquestIDE ${appReady ? '' : 'd-none'}`} data-id="remixIDE">
-          <div id="icon-panel" data-id="remixIdeIconPanel" className="custom_icon_panel iconpanel bg-light">
+          <div id="icon-panel" data-id="remixIdeIconPanel" className="custom_icon_panel iconpanel bg-light hack-icon-panel">
             {props.app.menuicons.render()}
           </div>
           <div ref={sidePanelRef} id="side-panel" data-id="remixIdeSidePanel" className={`sidepanel border-right border-left ${hideSidePanel ? 'd-none' : ''}`}>
