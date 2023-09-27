@@ -7,5 +7,144 @@
 }
 
 .udapp_runTabView .hack-udapp_container {
-  padding: 12px 0;
+  padding: 0.75rem 0;
+}
+
+.hack-udapp-settings .udapp_environment #selectExEnvOptions button {
+  background: #d9d9d9;
+  color: #3e3e3e;
+  border-radius: 0.1875rem !important;
+  border: 0.0625rem solid #d9d9d9 !important;
+  padding: 0.75rem 0.9375rem;
+  font-size: 0.875rem;
+  line-height: 100%;
+  height: fit-content !important;
+}
+
+.hack-udapp-settings .udapp_account .custom-select {
+  background-color: #d9d9d9;
+  color: #3e3e3e !important;
+  border-radius: 0.1875rem;
+  line-height: 100%;
+}
+.hack-udapp-settings .udapp_account svg {
+  /* margin: 0 !important; */
+  padding: 0 !important;
+  /* padding-left: .125rem; */
+  margin-left: 17.6px !important;
+}
+
+.hack-udapp-settings .udapp_gasValueContainer .udapp_gasNval {
+  background-color: #d9d9d9;
+  color: #3e3e3e !important;
+  border-radius: 0.1875rem;
+  line-height: 100%;
+}
+
+.hack-udapp-settings .udapp_gasValueContainer .udapp_gasNval:focus {
+  border-color: #ffea9f;
+  box-shadow: 0rem 0rem 0.3125rem #ffea9f;
+}
+
+.hack-udapp-settings .udapp_gasValueContainer .udapp_gasNvalUnit {
+  background-color: #d9d9d9;
+  color: #3e3e3e !important;
+  border-radius: 0.1875rem;
+  line-height: 100%;
+}
+
+.hack-udapp_container {
+  position: relative;
+  padding-bottom: 1.5rem !important;
+}
+
+.hack-udapp_container .udapp_subcontainer .udapp_contractNames {
+  background-color: #d9d9d9;
+  color: #3e3e3e !important;
+  border-radius: 0.1875rem;
+  line-height: 100%;
+}
+
+.hack-udapp_container .udapp_subcontainer .udapp_contractNames {
+  background-color: #d9d9d9;
+  color: #3e3e3e !important;
+  border-radius: 0.1875rem;
+  line-height: 100%;
+}
+
+.hack-udapp_container::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 0.0625rem;
+  transform: scaleY(0.5);
+  position: absolute;
+  bottom: 0rem;
+  left: 0;
+  background-color: #8c8c8c;
+}
+
+.hack-udapp_container .udapp_evmVersion {
+  background-color: transparent;
+  color: #8c8c8c;
+  line-height: 160%;
+  font-size: 0.75rem;
+  letter-spacing: 0.015rem;
+  display: flex;
+  gap: 0.3125rem;
+  align-items: center;
+}
+
+.hack-udapp_container .udapp_deployDropdown .udapp_contractActionsContainerSingle .udapp_instanceButton {
+  padding: 6px 24px !important;
+  width: fit-content !important;
+  border-radius: 32px !important;
+  background-color: #ffd850;
+  border: 1px solid #ffd850;
+  color: #0b0b0b;
+  line-height: 125%;
+}
+
+.hack-udapp_instanceContainer {
+}
+.hack-udapp_instanceContainer .udapp_instance-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.hack-udapp_instanceContainer .udapp_instance {
+  background-color: #d9d9d9 !important;
+  border-radius: 3px !important;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.hack-udapp_instanceContainer .udapp_instance .udapp_cActionsWrapper {
+}
+.hack-udapp_instanceContainer .udapp_instance .udapp_cActionsWrapper .udapp_contractActionsContainer .udapp_instanceButton {
+  padding: 6px 24px !important;
+  width: fit-content !important;
+  border-radius: 32px !important;
+  background-color: #ffd850;
+  border: 1px solid #ffd850;
+  color: #0b0b0b;
+  line-height: 125%;
+}
+.hack-udapp_instanceContainer .udapp_instance .udapp_cActionsWrapper .udapp_calldataInput:focus {
+  border-color: #ffea9f;
+  box-shadow: 0rem 0rem 0.3125rem #ffea9f;
+}
+.hack-udapp_instanceContainer .udapp_instance .udapp_cActionsWrapper .udapp_instanceButton {
+  /* padding: 6px 24px !important;
+  width: fit-content !important; */
+  background-color: #ffd850;
+  border: 1px solid #ffd850 !important;
+  color: #0b0b0b !important;
+  line-height: 125%;
+}
+
+.hack-udapp_instanceContainer .udapp_deployedContracts {
+  line-height: 160%;
+  font-size: 16px;
+  color: #8c8c8c;
 }

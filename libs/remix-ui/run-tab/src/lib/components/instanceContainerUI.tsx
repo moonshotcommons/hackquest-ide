@@ -34,7 +34,7 @@ export function InstanceContainerUI(props: InstanceContainerProps) {
         ) : null}
       </div>
       {instanceList.length > 0 ? (
-        <div>
+        <div className="udapp_instance-wrap">
           {' '}
           {props.instances.instanceList.map((instance, index) => {
             return (
