@@ -465,6 +465,11 @@ export function ContractDropdownUI(props: ContractDropdownProps) {
           }
         >
           <span className="udapp_evmVersion badge alert-warning">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="6" cy="6" r="6" fill="#8C8C8C" />
+              <circle cx="5.9999" cy="3.00039" r="0.6" fill="white" />
+              <rect x="5.3999" y="4.19922" width="1.2" height="5.4" rx="0.6" fill="white" />
+            </svg>
             <FormattedMessage id="udapp.evmVersion" />: {evmVersion}
           </span>
         </CustomTooltip>
@@ -494,7 +499,7 @@ export function ContractDropdownUI(props: ContractDropdownProps) {
                   disabled={props.selectedAccount === ''}
                 />
               </div>
-              <div className="d-flex py-1 align-items-center custom-control custom-checkbox">
+              {/* <div className="d-flex py-1 align-items-center custom-control custom-checkbox">
                 <input
                   id="deployAndRunPublishToIPFS"
                   data-id="contractDropdownIpfsCheckbox"
@@ -517,11 +522,11 @@ export function ContractDropdownUI(props: ContractDropdownProps) {
                     <FormattedMessage id="udapp.publishTo" /> IPFS
                   </label>
                 </CustomTooltip>
-              </div>
+              </div> */}
             </div>
           )}
         </div>
-        <div className="pt-2 d-flex flex-column sudapp_button udapp_atAddressSect">
+        {/* <div className="pt-2 d-flex flex-column sudapp_button udapp_atAddressSect">
           <div className="d-flex flex-row">
             <CustomTooltip placement={'top-end'} tooltipClasses="text-wrap text-left" tooltipId="runAndDeployAddresstooltip" tooltipText={atAddressOptions.title}>
               <div id="runAndDeployAtAdressButtonContainer" data-title={atAddressOptions.title}>
@@ -558,7 +563,7 @@ export function ContractDropdownUI(props: ContractDropdownProps) {
               <FormattedMessage id="udapp.addressNotValid" />
             </span>
           )}
-        </div>
+        </div> */}
       </div>
     </div>
   )

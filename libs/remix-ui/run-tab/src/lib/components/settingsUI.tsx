@@ -28,7 +28,7 @@ export function SettingsUI(props: SettingsProps) {
         signMessageWithAddress={props.signMessageWithAddress}
         passphrase={props.passphrase}
       />
-      <GasPriceUI gasLimit={props.gasLimit} setGasFee={props.setGasFee} />
+      {/* <GasPriceUI gasLimit={props.gasLimit} setGasFee={props.setGasFee} /> */}
       <ValueUI setUnit={props.setUnit} sendValue={props.sendValue} sendUnit={props.sendUnit} setSendValue={props.setSendValue} />
     </div>
   )

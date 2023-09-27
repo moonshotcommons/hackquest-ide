@@ -1,29 +1,6 @@
 import React, { FC, ReactNode } from 'react'
 import './header.style.css'
 
-const navList = [
-  {
-    name: 'Home',
-    link: '',
-  },
-  {
-    name: 'Learning Track',
-    link: '',
-  },
-  {
-    name: 'Electives',
-    link: '',
-  },
-  {
-    name: 'Community Center',
-    link: '',
-  },
-  {
-    name: 'Mission Center',
-    link: '',
-  },
-]
-
 const logo = (
   <svg width="136" height="14" viewBox="0 0 136 14" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M16.2748 0.416016V13.5839H11.7803V8.73011H6.38272V13.5839H1.88818V0.416016H6.38272V5.25082H11.7803V0.416016H16.2748Z" fill="white" />
@@ -70,17 +47,58 @@ const logo = (
 )
 
 const HackquestHeader: FC = () => {
+  const getBaseLink = () => {
+    switch (process.env.NODE_ENV) {
+    case 'staging':
+      return 'https://hackquest.io/'
+    case 'production':
+      return 'https://dev.hackquest.io/'
+    case 'development':
+      return 'https://dev.hackquest.io/'
+    default:
+      return 'http://localhost:3000'
+    }
+  }
+
+  const navList = [
+    {
+      name: 'Home',
+      link: `${getBaseLink()}/home`,
+    },
+    {
+      name: 'Learning Track',
+      link: `${getBaseLink()}/learning-track`,
+    },
+    {
+      name: 'Electives',
+      link: `${getBaseLink()}/electives`,
+    },
+    // {
+    //   name: 'Community Center',
+    //   link: '',
+    // },
+    // {
+    //   name: 'Mission Center',
+    //   link: '',
+    // },
+  ]
   return (
     <div className="hackquest-header">
       <div className="hackquest-header-logo">{logo}</div>
       <ul className="hackquest-header-nav">
         {navList.map((nav) => {
-          return <li className="hackquest-header-nav-item">{nav.name}</li>
+          return (
+            <a href={nav.link} className="hackquest-header-nav-item">
+              <li className="" key={nav.name}>
+                {nav.name}
+              </li>
+            </a>
+          )
         })}
       </ul>
-      <div className="hackquest-header-avatar">
+      {/* <div className="hackquest-header-avatar">
         <img src="assets/img/avatar.png" alt="avatar"></img>
-      </div>
+      </div> */}
     </div>
   )
 }

@@ -1,5 +1,5 @@
-const {composePlugins, withNx} = require('@nrwl/webpack')
-const {withReact} = require('@nrwl/react')
+const { composePlugins, withNx } = require('@nrwl/webpack')
+const { withReact } = require('@nrwl/react')
 const webpack = require('webpack')
 const CopyPlugin = require('copy-webpack-plugin')
 const version = require('../../package.json').version
@@ -8,15 +8,27 @@ const TerserPlugin = require('terser-webpack-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const axios = require('axios')
 
+const getEnv = () => {
+  switch (process.env.NODE_ENV) {
+    case 'staging':
+      return 'staging'
+    case 'prod':
+      return 'production'
+    case 'development':
+    default:
+      return 'development'
+  }
+}
+
 const versionData = {
   version: version,
   timestamp: Date.now(),
-  mode: process.env.NODE_ENV === 'production' ? 'production' : 'development'
+  mode: getEnv(),
 }
 
 const loadLocalSolJson = async () => {
   // execute apps/remix-ide/ci/downloadsoljson.sh
-  const child = require('child_process').execSync('bash ./apps/remix-ide/ci/downloadsoljson.sh', {encoding: 'utf8', cwd: process.cwd(), shell: true})
+  const child = require('child_process').execSync('bash ./apps/remix-ide/ci/downloadsoljson.sh', { encoding: 'utf8', cwd: process.cwd(), shell: true })
   // show output
   console.log(child)
 }
@@ -32,7 +44,7 @@ const implicitDependencies = JSON.parse(project).implicitDependencies
 const copyPatterns = implicitDependencies.map((dep) => {
   try {
     fs.statSync(__dirname + `/../../dist/apps/${dep}`).isDirectory()
-    return {from: `../../dist/apps/${dep}`, to: `plugins/${dep}`}
+    return { from: `../../dist/apps/${dep}`, to: `plugins/${dep}` }
   } catch (e) {
     console.log('error', e)
     return false
@@ -65,13 +77,13 @@ module.exports = composePlugins(withNx(), withReact(), (config) => {
     readline: false,
     child_process: false,
     buffer: require.resolve('buffer/'),
-    vm: require.resolve('vm-browserify')
+    vm: require.resolve('vm-browserify'),
   }
 
   // add externals
   config.externals = {
     ...config.externals,
-    solc: 'solc'
+    solc: 'solc',
   }
 
   // add public path
@@ -87,16 +99,16 @@ module.exports = composePlugins(withNx(), withReact(), (config) => {
       patterns: [
         {
           from: '../../node_modules/monaco-editor/min/vs',
-          to: 'assets/js/monaco-editor/min/vs'
+          to: 'assets/js/monaco-editor/min/vs',
         },
-        ...copyPatterns
-      ].filter(Boolean)
+        ...copyPatterns,
+      ].filter(Boolean),
     }),
     new CopyFileAfterBuild(),
     new webpack.ProvidePlugin({
       Buffer: ['buffer', 'Buffer'],
       url: ['url', 'URL'],
-      process: 'process/browser'
+      process: 'process/browser',
     })
   )
 
@@ -104,7 +116,7 @@ module.exports = composePlugins(withNx(), withReact(), (config) => {
   config.module.rules.push({
     test: /\.js$/,
     use: ['source-map-loader'],
-    enforce: 'pre'
+    enforce: 'pre',
   })
 
   config.ignoreWarnings = [/Failed to parse source map/, /require function/] // ignore source-map-loader warnings & AST warnings
@@ -118,16 +130,16 @@ module.exports = composePlugins(withNx(), withReact(), (config) => {
         compress: false,
         mangle: false,
         format: {
-          comments: false
-        }
+          comments: false,
+        },
       },
-      extractComments: false
+      extractComments: false,
     }),
-    new CssMinimizerPlugin()
+    new CssMinimizerPlugin(),
   ]
 
   config.watchOptions = {
-    ignored: /node_modules/
+    ignored: /node_modules/,
   }
 
   return config
