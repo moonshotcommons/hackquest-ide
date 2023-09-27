@@ -1,7 +1,7 @@
 import React from 'react' // eslint-disable-line
-import {RunTabUI} from '@remix-ui/run-tab'
-import {ViewPlugin} from '@remixproject/engine-web'
-import {addressToString} from '@remix-ui/helper'
+import { RunTabUI } from '@remix-ui/run-tab'
+import { ViewPlugin } from '@remixproject/engine-web'
+import { addressToString } from '@remix-ui/helper'
 import * as packageJson from '../../../../../package.json'
 
 const EventManager = require('../../lib/events')
@@ -10,7 +10,8 @@ const _paq = (window._paq = window._paq || [])
 
 const profile = {
   name: 'udapp',
-  displayName: 'Deploy & run transactions',
+  // displayName: 'Deploy & run transactions',
+  displayName: 'Deploy & run',
   icon: 'assets/img/deployAndRun.webp',
   description: 'Execute, save and replay transactions',
   kind: 'udapp',
@@ -29,8 +30,8 @@ const profile = {
     'setEnvironmentMode',
     'clearAllInstances',
     'addInstance',
-    'resolveContractAndAddInstance'
-  ]
+    'resolveContractAndAddInstance',
+  ],
 }
 
 export class RunTab extends ViewPlugin {
@@ -62,7 +63,7 @@ export class RunTab extends ViewPlugin {
       resolve({
         selectedAccount: this.REACT_API.accounts.selectedAccount,
         selectedEnvMode: this.REACT_API.selectExEnv,
-        networkEnvironment: this.REACT_API.networkName
+        networkEnvironment: this.REACT_API.networkName,
       })
     })
   }
@@ -70,7 +71,7 @@ export class RunTab extends ViewPlugin {
   async setEnvironmentMode(env) {
     const canCall = await this.askUserPermission('setEnvironmentMode', 'change the environment used')
     if (canCall) {
-      env = typeof env === 'string' ? {context: env} : env
+      env = typeof env === 'string' ? { context: env } : env
       this.emit('setEnvironmentModeReducer', env, this.currentRequest.from)
     }
   }
@@ -140,8 +141,8 @@ export class RunTab extends ViewPlugin {
             } catch (e) {
               callback(e)
             }
-          }
-        }
+          },
+        },
       })
     }
 
@@ -153,10 +154,10 @@ export class RunTab extends ViewPlugin {
           ? window.ethereum.isCoinbaseWallet || window.ethereum.selectedProvider?.isCoinbaseWallet
             ? ' - Coinbase'
             : window.ethereum.isBraveWallet || window.ethereum.selectedProvider?.isBraveWallet
-              ? ' - Brave'
-              : window.ethereum.isMetaMask || window.ethereum.selectedProvider?.isMetaMask
-                ? ' - MetaMask'
-                : ''
+            ? ' - Brave'
+            : window.ethereum.isMetaMask || window.ethereum.selectedProvider?.isMetaMask
+            ? ' - MetaMask'
+            : ''
           : ''
       }`
       await addProvider('injected', displayNameInjected, true, false)

@@ -15,7 +15,7 @@ export function InstanceContainerUI(props: InstanceContainerProps) {
   const intl = useIntl()
 
   return (
-    <div className="udapp_instanceContainer mt-3 border-0 list-group-item">
+    <div className="udapp_instanceContainer mt-3 border-0 list-group-item hack-udapp_instanceContainer">
       <div className="d-flex justify-content-between align-items-center pl-2 mb-2">
         <CustomTooltip placement="top-start" tooltipClasses="text-nowrap" tooltipId="deployAndRunClearInstancesTooltip" tooltipText={<FormattedMessage id="udapp.tooltipText6" />}>
           <label className="udapp_deployedContracts">
