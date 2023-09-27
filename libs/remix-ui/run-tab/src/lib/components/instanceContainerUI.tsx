@@ -56,6 +56,12 @@ export function InstanceContainerUI(props: InstanceContainerProps) {
         </div>
       ) : (
         <span className="mx-2 mt-3 alert alert-warning" data-id="deployAndRunNoInstanceText" role="alert">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginRight: '8px' }}>
+            <circle cx="10" cy="10" r="10" fill="#FF624D" />
+            <circle cx="10" cy="5" r="1" fill="white" />
+            <rect x="9" y="7" width="2" height="9" rx="1" fill="white" />
+          </svg>
+
           <FormattedMessage id="udapp.deployAndRunNoInstanceText" />
         </span>
       )}

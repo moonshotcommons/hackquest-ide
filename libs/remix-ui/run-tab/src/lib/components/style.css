@@ -27,6 +27,14 @@
   border-radius: 0.1875rem;
   line-height: 100%;
 }
+
+.hack-udapp-settings .udapp_account .custom-select > option {
+  display: block;
+  background-color: #fff !important;
+  padding: 10px !important;
+  height: 20px !important;
+}
+
 .hack-udapp-settings .udapp_account svg {
   /* margin: 0 !important; */
   padding: 0 !important;
@@ -51,6 +59,10 @@
   color: #3e3e3e !important;
   border-radius: 0.1875rem;
   line-height: 100%;
+}
+
+.hack-udapp-settings .udapp_gasValueContainer .udapp_gasNvalUnit > option {
+  background-color: #fff !important;
 }
 
 .hack-udapp_container {
@@ -147,4 +159,16 @@
   line-height: 160%;
   font-size: 16px;
   color: #8c8c8c;
+}
+
+.hack-udapp_instanceContainer .alert-warning {
+  line-height: 160%;
+  color: #3e3e3e;
+  border: 1px solid #ff624d;
+  background-color: #fff7f5;
+  color: #3e3e3e;
+  font-size: 14px !important;
+  padding: 15px !important;
+  margin: 0 !important;
+  text-align: left;
 }

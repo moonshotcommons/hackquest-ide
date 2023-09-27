@@ -24,6 +24,18 @@
   flex: 1;
 }
 
+.hackquest-header-nav-item {
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+}
+
+.hackquest-header-nav-item:hover {
+  text-decoration: none;
+  color: rgb(211, 211, 211);
+  font-size: 14px;
+}
+
 .hackquest-header-avatar {
   width: 34px;
   height: 34px;
