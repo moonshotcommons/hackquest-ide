@@ -18,7 +18,8 @@
   overflow-y: hidden;
   background-color: transparent;
   margin: 0;
-  font-size: 12px;
+  font-size: 14px;
+  line-height: 23px;
   border: 0 none;
   padding: 0;
   border-radius: 0;
@@ -27,7 +28,7 @@
 .remixui_sol.success .close,
 .remixui_sol.error .close,
 .remixui_sol.warning .close {
-  visibility: hidden;
+  /* visibility: hidden; */
   white-space: pre-line;
   font-weight: bold;
   position: absolute;
@@ -45,3 +46,24 @@
   right: 0;
   padding: 0.25rem;
 }
+
+.alert-warning {
+  color: #3E3E3E;
+  font-size: 14px;
+  letter-spacing: 0.28px;
+  border:0.5px solid #FF624D;
+  background: #FFF7F5;
+}
+.waning-icon {
+  position: relative;
+  text-align: center;
+  line-height: 20px!important;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #FF624D;
+  margin-right: 15px;
+  font-size: 12px;
+  color: #fff;
+}
+

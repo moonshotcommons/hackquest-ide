@@ -11,6 +11,7 @@ import { getValidLanguage } from '@remix-project/remix-solidity'
 import { CopyToClipboard } from '@remix-ui/clipboard'
 import { configFileContent } from './compilerConfiguration'
 import axios, { AxiosResponse } from 'axios'
+import './compiler-container.css'
 
 import './css/style.css'
 const defaultPath = 'compiler_config.json'
@@ -753,10 +754,11 @@ export const CompilerContainer = (props: CompilerContainerProps) => {
   }
 
   return (
-    <section>
+    <section className='complie-content'
+    >
       <article>
         <div className="pt-0 remixui_compilerSection hack-remixui_compilerSection">
-          <div className="mb-1">
+          <div className="remixui_compilerSection_label">
             <label className="remixui_compilerLabel form-check-label" htmlFor="versionSelector">
               <FormattedMessage id="solidity.compiler" />
             </label>
@@ -771,6 +773,9 @@ export const CompilerContainer = (props: CompilerContainerProps) => {
             <CustomTooltip placement="top" tooltipId="showCompilerTooltip" tooltipClasses="text-nowrap" tooltipText={<FormattedMessage id="solidity.seeCompilerLicense" />}>
               <span className="fa fa-file-text-o border-0 p-0 ml-2" onClick={() => showCompilerLicense()}></span>
             </CustomTooltip>
+            
+          </div>
+          <div>
             <select
               value={state.selectedVersion || state.defaultVersion}
               onChange={(e) => handleLoadVersion(e.target.value)}
@@ -1079,7 +1084,8 @@ export const CompilerContainer = (props: CompilerContainerProps) => {
           <button
             id="compileBtn"
             data-id="compilerContainerCompileBtn"
-            className="btn btn-primary btn-block d-block w-100 text-break remixui_disabled mb-1 mt-3"
+            // className="btn btn-primary btn-block d-block w-100 text-break remixui_disabled mb-1 mt-3"
+            className="compile-btn"
             onClick={compile}
             disabled={(configFilePath === '' && state.useFileConfiguration) || disableCompileButton}
           >
@@ -1103,12 +1109,12 @@ export const CompilerContainer = (props: CompilerContainerProps) => {
               }
             >
               <div className="d-flex align-items-center justify-content-center">
-                {<i ref={compileIcon} className="fas fa-sync mr-2" aria-hidden="true"></i>}
+                {/* {<i ref={compileIcon} className="fas fa-sync mr-2" aria-hidden="true"></i>} */}
                 <div className="text-truncate overflow-hidden text-nowrap">
                   <span>
                     <FormattedMessage id="solidity.compile" />
                   </span>
-                  <span className="ml-1 text-nowrap">
+                  {/* <span className="ml-1 text-nowrap">
                     {typeof state.compiledFileName === 'string'
                       ? extractNameFromKey(state.compiledFileName) ||
                         `<${intl.formatMessage({
@@ -1117,7 +1123,7 @@ export const CompilerContainer = (props: CompilerContainerProps) => {
                       : `<${intl.formatMessage({
                         id: 'solidity.noFileSelected',
                       })}>`}
-                  </span>
+                  </span> */}
                 </div>
               </div>
             </CustomTooltip>

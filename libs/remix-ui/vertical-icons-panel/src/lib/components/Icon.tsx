@@ -7,6 +7,7 @@ import { iconBadgeReducer, IconBadgeReducerAction } from '../reducers/iconBadgeR
 import { Plugin } from '@remixproject/engine'
 import { IconRecord } from '../types'
 import { CustomTooltip } from '@remix-ui/helper'
+import './Icon.css';
 
 export interface IconStatus {
   key: string
@@ -92,7 +93,7 @@ const Icon = ({ iconRecord, verticalIconPlugin, contextMenuAction, theme }: Icon
         delay={{ show: 1000, hide: 0 }}
       >
         <div
-          className={`remixui_icon m-2  pt-1 ${iconRecord.active ? `selected-wrap-${theme}` : ''}`}
+          className={`remixui_icon   ${iconRecord.active ? `selected-wrap-${theme}` : ''}`}
           onClick={() => {
             ;(verticalIconPlugin as any).toggle(name)
           }}
@@ -112,7 +113,7 @@ const Icon = ({ iconRecord, verticalIconPlugin, contextMenuAction, theme }: Icon
             src={icon}
             alt={name}
           />
-          <Badge badgeStatus={badgeStatus} />
+          <div className='badge-content'><Badge badgeStatus={badgeStatus} /></div>
         </div>
       </CustomTooltip>
       {showContext ? (
