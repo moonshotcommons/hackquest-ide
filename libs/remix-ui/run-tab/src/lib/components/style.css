@@ -1,11 +1,11 @@
-.hack-udapp-settings {
+.udapp_runTabView div.hack-udapp-settings {
   padding: 0;
 }
 
-.hack-udapp_instanceContainer {
+.udapp_runTabView .hack-udapp_instanceContainer {
   padding: 0;
 }
 
-.hack-udapp_container {
+.udapp_runTabView .hack-udapp_container {
   padding: 12px 0;
 }
