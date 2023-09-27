@@ -82,7 +82,7 @@
   position: relative;
   bottom: 0;
   right: 0;
-  left: 12px;
+  /* left: 12px; */
   top: -13px;
 }
 .remixui_statusCheck {
