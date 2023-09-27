@@ -6,7 +6,7 @@ import packageJson from '../../../../../package.json'
 import { RemixUIPanelHeader } from '@remix-ui/panel'
 import { PluginViewWrapper } from '@remix-ui/helper'
 // const csjs = require('csjs-inject')
-
+import './styles/side-panel.css'
 const sidePanel = {
   name: 'sidePanel',
   displayName: 'Side Panel',
@@ -85,7 +85,7 @@ export class SidePanel extends AbstractPanel {
 
   render() {
     return (
-      <section className="panel plugin-manager">
+      <section className="panel plugin-manager hack-side-panel">
         <PluginViewWrapper plugin={this} />
       </section>
     )

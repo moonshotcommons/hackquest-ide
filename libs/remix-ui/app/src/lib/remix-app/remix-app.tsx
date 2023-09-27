@@ -10,7 +10,10 @@ import DialogViewPlugin from './components/modals/dialogViewPlugin'
 import { AppContext } from './context/context'
 import { IntlProvider, FormattedMessage } from 'react-intl'
 import { CustomTooltip } from '@remix-ui/helper'
-
+// import { HackQuestHeader } from '@remix-ui/'
+import './style/hackquest-app.css'
+import HackquestHeader from './components/header'
+import HackquestFooter from './components/footer'
 interface IRemixAppUi {
   app: any
 }
@@ -87,11 +90,9 @@ const RemixApp = (props: IRemixAppUi) => {
       <AppProvider value={value}>
         {/* <OriginWarning></OriginWarning> */}
         {/* <MatomoDialog hide={!appReady}></MatomoDialog> */}
-        <div className="hackquest-header">
-          <h1 className="hackquest-header-text">HackQuest IDE</h1>
-        </div>
-        <div className={`remixIDE ${appReady ? '' : 'd-none'}`} data-id="remixIDE">
-          <div id="icon-panel" data-id="remixIdeIconPanel" className="custom_icon_panel iconpanel bg-light">
+        <HackquestHeader></HackquestHeader>
+        <div className={`remixIDE hackquestIDE ${appReady ? '' : 'd-none'}`} data-id="remixIDE">
+          <div id="icon-panel" data-id="remixIdeIconPanel" className="custom_icon_panel iconpanel bg-light hack-icon-panel">
             {props.app.menuicons.render()}
           </div>
           <div ref={sidePanelRef} id="side-panel" data-id="remixIdeSidePanel" className={`sidepanel border-right border-left ${hideSidePanel ? 'd-none' : ''}`}>
@@ -105,7 +106,7 @@ const RemixApp = (props: IRemixAppUi) => {
             hidden={hideSidePanel}
             setHideStatus={setHideSidePanel}
           ></DragBar> */}
-          <div id="main-panel" data-id="remixIdeMainPanel" className="mainpanel d-flex">
+          <div id="main-panel" data-id="remixIdeMainPanel" className="mainpanel d-flex hack-main-panel">
             <RemixUIMainPanel Context={AppContext}></RemixUIMainPanel>
             {/* <CustomTooltip placement="bottom" tooltipId="overlay-tooltip-all-tabs" tooltipText={<FormattedMessage id="remixApp.scrollToSeeAllTabs" />}>
               <div className="remix-ui-tabs_end remix-bg-opacity position-absolute position-fixed"></div>
@@ -115,6 +116,7 @@ const RemixApp = (props: IRemixAppUi) => {
         <div>{props.app.hiddenPanel.render()}</div>
         <AppDialogs></AppDialogs>
         <DialogViewPlugin></DialogViewPlugin>
+        <HackquestFooter></HackquestFooter>
       </AppProvider>
     </IntlProvider>
   )

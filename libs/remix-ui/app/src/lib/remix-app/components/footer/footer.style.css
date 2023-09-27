@@ -1,0 +1,17 @@
+.hackquest-footer {
+  height: 30px;
+  width: 100vw;
+  background-color: #3e3e3e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  line-height: 168%;
+  font-size: 12px;
+  letter-spacing: 0.72px;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
