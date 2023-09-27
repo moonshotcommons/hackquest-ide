@@ -91,7 +91,6 @@ export const Renderer = ({message, opt = {}, plugin}: RendererProps) => {
           ) : (
             <pre>
               <i className="fas fa-exclamation waning-icon"></i>
-              {/* <i className="fa-solid fa-code"></i> */}
               <span>{messageText}</span>
             </pre>
           )}
