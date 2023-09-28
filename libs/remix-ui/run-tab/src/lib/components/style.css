@@ -21,6 +21,10 @@
   height: fit-content !important;
 }
 
+.hack-udapp-settings .udapp_environment #selectExEnvOptions button:focus {
+  box-shadow: none;
+}
+
 .hack-udapp-settings .udapp_account .custom-select {
   background-color: #d9d9d9;
   color: #3e3e3e !important;
@@ -50,8 +54,8 @@
 }
 
 .hack-udapp-settings .udapp_gasValueContainer .udapp_gasNval:focus {
-  border-color: #ffea9f;
-  box-shadow: 0rem 0rem 0.3125rem #ffea9f;
+  border-color: #8c8c8c;
+  box-shadow: 0rem 0rem 0.3125rem #8c8c8c;
 }
 
 .hack-udapp-settings .udapp_gasValueContainer .udapp_gasNvalUnit {
@@ -143,9 +147,10 @@
   line-height: 125%;
 }
 .hack-udapp_instanceContainer .udapp_instance .udapp_cActionsWrapper .udapp_calldataInput:focus {
-  border-color: #ffea9f;
-  box-shadow: 0rem 0rem 0.3125rem #ffea9f;
+  border-color: #8c8c8c;
+  box-shadow: 0rem 0rem 0.3125rem #8c8c8c;
 }
+
 .hack-udapp_instanceContainer .udapp_instance .udapp_cActionsWrapper .udapp_instanceButton {
   /* padding: 6px 24px !important;
   width: fit-content !important; */
@@ -153,6 +158,11 @@
   border: 1px solid #ffd850 !important;
   color: #0b0b0b !important;
   line-height: 125%;
+}
+
+.hack-udapp_instanceContainer .udapp_instance .udapp_cActionsWrapper .udapp_instanceButton:focus {
+  border: 1px solid #ffd850 !important;
+  box-shadow: 0px 0px 5px #ffd850;
 }
 
 .hack-udapp_instanceContainer .udapp_deployedContracts {
