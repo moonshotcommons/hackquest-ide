@@ -54,7 +54,7 @@ const TerminalWelcomeMessage = ({ packageJson, storage }) => {
             ethers.js
           </a>{' '}
         </li>
-        <li key="remix-console">remix</li>
+        <li key="remix-console">hackquest</li>
       </ul>
       <div>
         <FormattedMessage id="terminal.welcomeText10" />.

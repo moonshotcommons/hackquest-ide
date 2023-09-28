@@ -24,3 +24,7 @@ body {
   user-select: none;
   background-color: #dadada !important;
 }
+
+.hackquestIDE > .hack-icon-panel .remixui_icons .remixui_icon img {
+  width: fit-content;
+}
