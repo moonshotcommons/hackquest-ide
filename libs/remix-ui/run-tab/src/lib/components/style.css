@@ -121,6 +121,26 @@
   line-height: 125%;
 }
 
+.hack-udapp_container .udapp_deployDropdown .udapp_contractActionsContainerSingle .form-control:focus,
+.hack-udapp_container .udapp_deployDropdown .udapp_contractActionsContainerMulti .udapp_contractActionsContainerMultiInner .form-control:focus {
+  border-color: #8c8c8c;
+  box-shadow: 0rem 0rem 0.3125rem #8c8c8c;
+}
+.hack-udapp_container .udapp_deployDropdown .udapp_contractActionsContainerMulti .udapp_contractActionsContainerMultiInner .btn:focus {
+  border-color: #8c8c8c;
+  box-shadow: 0rem 0rem 0.3125rem #8c8c8c;
+}
+
+.hack-udapp_container .udapp_deployDropdown .udapp_contractActionsContainerMulti .udapp_contractActionsContainerMultiInner .udapp_instanceButton {
+  padding: 6px 24px !important;
+  width: fit-content !important;
+  border-radius: 32px !important;
+  background-color: #ffd850;
+  border: 1px solid #ffd850;
+  color: #0b0b0b;
+  line-height: 125%;
+}
+
 .hack-udapp_instanceContainer {
 }
 .hack-udapp_instanceContainer .udapp_instance-wrap {
@@ -163,6 +183,30 @@
 .hack-udapp_instanceContainer .udapp_instance .udapp_cActionsWrapper .udapp_instanceButton:focus {
   border: 1px solid #ffd850 !important;
   box-shadow: 0px 0px 5px #ffd850;
+}
+
+.hack-udapp_instanceContainer .udapp_instance .udapp_cActionsWrapper .udapp_contractActionsContainer .udapp_contractActionsContainerSingle {
+}
+.hack-udapp_instanceContainer .udapp_instance .udapp_cActionsWrapper .udapp_contractActionsContainer .udapp_contractActionsContainerSingle .udapp_instanceButton {
+  background-color: #ffd850;
+  border-radius: 3px !important;
+  padding: 9px 15px !important;
+}
+
+.hack-udapp_instanceContainer .udapp_instance .udapp_cActionsWrapper .udapp_contractActionsContainer .udapp_contractActionsContainerSingle .form-control:focus,
+.hack-udapp_instanceContainer .udapp_instance .udapp_cActionsWrapper .udapp_contractActionsContainer .udapp_contractActionsContainerMulti .form-control:focus {
+  border-color: #8c8c8c;
+  box-shadow: 0rem 0rem 0.3125rem #8c8c8c;
+}
+
+.hack-udapp_instanceContainer .udapp_instance .udapp_cActionsWrapper .udapp_contractActionsContainer .udapp_contractActionsContainerMulti .udapp_instanceButton {
+  padding: 6px 24px !important;
+  width: fit-content !important;
+  border-radius: 32px !important;
+  background-color: #ffd850;
+  border: 1px solid #ffd850;
+  color: #0b0b0b;
+  line-height: 125%;
 }
 
 .hack-udapp_instanceContainer .udapp_deployedContracts {
