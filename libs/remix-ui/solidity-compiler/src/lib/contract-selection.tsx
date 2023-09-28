@@ -339,7 +339,7 @@ export const ContractSelection = (props: ContractSelectionProps) => {
           </article>
         </section>
       ) : (
-        <section className="remixui_container clearfix">
+        <section className="remixui_container clearfix no-contract-compiled">
           <article className="mt-2 pb-0 d-flex w-100">
             <span className="mt-2 w-100 alert alert-warning" role="alert">
               <FormattedMessage id="solidity.noContractCompiled" />
