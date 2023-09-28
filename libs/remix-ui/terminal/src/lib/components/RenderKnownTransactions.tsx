@@ -30,7 +30,7 @@ const RenderKnownTransactions = ({tx, receipt, resolvedData, logs, index, plugin
   const txType = 'knownTx'
   const options = {from, to, tx, logs}
   return (
-    <span id={`tx${tx.hash}`} key={index}>
+    <span id={`tx${tx.hash}`} key={index} className='d-none'>
       <div className="remix_ui_terminal_log" onClick={(event) => txDetails(event, tx)}>
         <CheckTxStatus tx={receipt} type={txType} />
         <Context opts={options} provider={provider} />
