@@ -104,6 +104,7 @@ export function ValueUI(props: ValueProps) {
             <Dropdown.Item
               data-unit="wei"
               value="wei"
+              active={props.sendUnit === 'wei'}
               onClick={(e) => {
                 props.setUnit('wei')
               }}
@@ -113,6 +114,7 @@ export function ValueUI(props: ValueProps) {
             <Dropdown.Item
               data-unit="gwei"
               value="gwei"
+              active={props.sendUnit === 'gwei'}
               onClick={(e) => {
                 props.setUnit('gwei')
               }}
@@ -122,6 +124,7 @@ export function ValueUI(props: ValueProps) {
             <Dropdown.Item
               data-unit="finney"
               value="finney"
+              active={props.sendUnit === 'finney'}
               onClick={(e) => {
                 props.setUnit('finney')
               }}
@@ -131,8 +134,9 @@ export function ValueUI(props: ValueProps) {
             <Dropdown.Item
               data-unit="ether"
               value="ether"
+              active={props.sendUnit === 'ether'}
               onClick={(e) => {
-                props.setUnit('finney')
+                props.setUnit('ether')
               }}
             >
               Ether
