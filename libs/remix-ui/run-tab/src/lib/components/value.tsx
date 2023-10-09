@@ -1,9 +1,11 @@
 // eslint-disable-next-line no-use-before-define
-import React, {useEffect, useRef, useState} from 'react'
-import {FormattedMessage} from 'react-intl'
-import {BN} from 'bn.js'
-import {CustomTooltip, isNumeric} from '@remix-ui/helper'
-import {ValueProps} from '../types'
+import React, { useEffect, useRef, useState } from 'react'
+import { FormattedMessage } from 'react-intl'
+import { BN } from 'bn.js'
+import { CustomTooltip, isNumeric } from '@remix-ui/helper'
+import { ValueProps } from '../types'
+import { Dropdown } from 'react-bootstrap'
+import { CustomMenu, CustomToggle } from '@remix-ui/helper'
 
 export function ValueUI(props: ValueProps) {
   const [sendValue, setSendValue] = useState<string>(props.sendValue)
@@ -67,7 +69,7 @@ export function ValueUI(props: ValueProps) {
           />
         </CustomTooltip>
 
-        <select
+        {/* <select
           name="unit"
           value={props.sendUnit}
           className="form-control p-1 udapp_gasNvalUnit udapp_col2_2 custom-select"
@@ -88,7 +90,55 @@ export function ValueUI(props: ValueProps) {
           <option data-unit="ether" value="ether">
             Ether
           </option>
-        </select>
+        </select> */}
+        <Dropdown id="selectExEnvOptions" data-id="settingsSelectEnvOptions" className="udapp_selectExEnvOptions">
+          <Dropdown.Toggle
+            as={CustomToggle}
+            id="dropdown-custom-components"
+            className="custom-select btn btn-light btn-block d-inline-block border border-dark form-control"
+            icon={null}
+          >
+            {props.sendUnit || ''}
+          </Dropdown.Toggle>
+          <Dropdown.Menu as={CustomMenu} className="custom-dropdown-items" data-id="custom-dropdown-items">
+            <Dropdown.Item
+              data-unit="wei"
+              value="wei"
+              onClick={(e) => {
+                props.setUnit('wei')
+              }}
+            >
+              Wei
+            </Dropdown.Item>
+            <Dropdown.Item
+              data-unit="gwei"
+              value="gwei"
+              onClick={(e) => {
+                props.setUnit('gwei')
+              }}
+            >
+              Gwei
+            </Dropdown.Item>
+            <Dropdown.Item
+              data-unit="finney"
+              value="finney"
+              onClick={(e) => {
+                props.setUnit('finney')
+              }}
+            >
+              Finney
+            </Dropdown.Item>
+            <Dropdown.Item
+              data-unit="ether"
+              value="ether"
+              onClick={(e) => {
+                props.setUnit('finney')
+              }}
+            >
+              Ether
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
       </div>
     </div>
   )

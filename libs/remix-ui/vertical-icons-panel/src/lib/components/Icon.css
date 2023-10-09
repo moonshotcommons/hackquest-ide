@@ -3,6 +3,6 @@
 }
 .badge-content {
   position: absolute;
-  right: 0;
-  top:16px;
+  right: 10px;
+  bottom: -4px;
 }

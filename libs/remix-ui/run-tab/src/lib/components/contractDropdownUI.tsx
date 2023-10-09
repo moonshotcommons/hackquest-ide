@@ -6,7 +6,9 @@ import { ContractData, FuncABI, OverSizeLimit } from '@remix-project/core-plugin
 import * as ethJSUtil from '@ethereumjs/util'
 import { ContractGUI } from './contractGUI'
 import { CustomTooltip, deployWithProxyMsg, upgradeWithProxyMsg, extractNameFromKey } from '@remix-ui/helper'
-import { title } from 'process'
+
+import { Dropdown } from 'react-bootstrap'
+import { CustomMenu, CustomToggle } from '@remix-ui/helper'
 const _paq = (window._paq = window._paq || [])
 
 export function ContractDropdownUI(props: ContractDropdownProps) {
@@ -39,6 +41,7 @@ export function ContractDropdownUI(props: ContractDropdownProps) {
   const [addressIsValid, setaddressIsValid] = useState(true)
   const [compilerName, setCompilerName] = useState<string>('')
   const contractsRef = useRef<HTMLSelectElement>(null)
+  const contractssRef = useRef<HTMLSelectElement>(null)
   const atAddressValue = useRef<HTMLInputElement>(null)
   const compileIcon = useRef(null)
   const { contractList, loadType, currentFile, compilationSource, currentContract, compilationCount, deployOptions } = props.contracts
@@ -378,6 +381,8 @@ export function ContractDropdownUI(props: ContractDropdownProps) {
     )
   }
 
+  console.log(contractssRef.current)
+
   let evmVersion = null
   try {
     evmVersion = JSON.parse(loadedContractData.metadata).settings.evmVersion
@@ -449,6 +454,34 @@ export function ContractDropdownUI(props: ContractDropdownProps) {
             })}
           </select>
         </CustomTooltip>
+        {/* <Dropdown id="selectExEnvOptions" data-id="settingsSelectEnvOptions" className="udapp_selectExEnvOptions">
+          <Dropdown.Toggle
+            as={CustomToggle}
+            id="dropdown-custom-components"
+            className="custom-select btn btn-light btn-block d-inline-block border border-dark form-control"
+            icon={null}
+          >
+            <div>{currentContract}</div>
+          </Dropdown.Toggle>
+          <Dropdown.Menu as={CustomMenu} className="custom-dropdown-items" data-id="custom-dropdown-items">
+            <Dropdown.Item disabled hidden>
+              <span className="">{intl.formatMessage({ id: 'udapp.noCompiledContracts' })}</span>
+            </Dropdown.Item>
+            {(contractList[currentFile] || []).map((contract, index) => (
+              <Dropdown.Item
+                key={index}
+                onClick={() => {
+                  handleContractChange(contract.alias)
+                }}
+                data-id={`dropdown-item-${contract}`}
+              >
+                <span className="">
+                  {contract.alias} - {contract.file}
+                </span>
+              </Dropdown.Item>
+            ))}
+          </Dropdown.Menu>
+        </Dropdown> */}
         <span className="py-1" style={{ display: abiLabel.display }}>
           {abiLabel.content}
         </span>
