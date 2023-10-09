@@ -68,16 +68,16 @@ export function EnvironmentUI(props: EnvironmentProps) {
           </Dropdown.Menu>
         </Dropdown>
 
-        <CustomTooltip placement={'right-start'} tooltipClasses="text-wrap" tooltipId="runAndDeployAddresstooltip" tooltipText={<FormattedMessage id="udapp.environmentDocs" />}>
+        {/* <CustomTooltip placement={'right-start'} tooltipClasses="text-wrap" tooltipId="runAndDeployAddresstooltip" tooltipText={<FormattedMessage id="udapp.environmentDocs" />}>
           <a href="https://remix-ide.readthedocs.io/en/latest/run.html#environment" target="_blank" rel="noreferrer">
-            {/* <i className="udapp_infoDeployAction ml-2 fas fa-info"></i> */}
+            <i className="udapp_infoDeployAction ml-2 fas fa-info"></i>
             <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="8.5" cy="8.5" r="8.5" fill="#8C8C8C" />
               <circle cx="8.50039" cy="4.25039" r="0.85" fill="white" />
               <rect x="7.65039" y="5.94922" width="1.7" height="7.65" rx="0.85" fill="white" />
             </svg>
           </a>
-        </CustomTooltip>
+        </CustomTooltip> */}
       </div>
     </div>
   )
