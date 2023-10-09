@@ -1,5 +1,7 @@
 .remixui_compilerSection {
-  /* overflow: hidden; */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 .remixui_compilerSection .remixui_copyButton {
   font-size: 12px;
