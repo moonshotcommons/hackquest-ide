@@ -30,20 +30,20 @@ const RenderKnownTransactions = ({tx, receipt, resolvedData, logs, index, plugin
   const txType = 'knownTx'
   const options = {from, to, tx, logs}
   return (
-    <span id={`tx${tx.hash}`} key={index} className='d-none'>
+    <span id={`tx${tx.hash}`} key={index}>
       <div className="remix_ui_terminal_log" onClick={(event) => txDetails(event, tx)}>
         <CheckTxStatus tx={receipt} type={txType} />
         <Context opts={options} provider={provider} />
-        <div className="remix_ui_terminal_buttons">
+        {/* <div className="remix_ui_terminal_buttons">
           <div
-            className="remix_ui_terminal_debug btn btn-primary btn-sm"
+            className="remix_ui_terminal_debug btn btn-primary btn-sm "
             data-shared="txLoggerDebugButton"
             data-id={`txLoggerDebugButton${tx.hash}`}
             onClick={(event) => debug(event, tx)}
           >
             <FormattedMessage id="terminal.debug" />
           </div>
-        </div>
+        </div> */}
         <i className={`remix_ui_terminal_arrow fas ${showTableHash.includes(tx.hash) ? 'fa-angle-up' : 'fa-angle-down'}`}></i>
       </div>
       {showTableHash.includes(tx.hash)
