@@ -238,6 +238,7 @@ export function AccountUI(props: AccountProps) {
                 onClick={() => {
                   props.setAccount(value)
                 }}
+                active={selectedAccount === value}
                 data-id={`dropdown-item-${value}`}
               >
                 <span className="">{loadedAccounts[value]}</span>

@@ -286,10 +286,13 @@ export function ContractDropdownUI(props: ContractDropdownProps) {
     window.localStorage.setItem(`ipfs/${props.exEnvironment}/${props.networkName}`, checkedState.toString())
   }
 
-  const updateCompilerName = () => {
-    if (contractsRef.current.value) {
+  const updateCompilerName = (value?: any) => {
+    if (!value) value = currentContract
+    // if (contractsRef.current.value) {
+    if (value) {
       contractList[currentFile].forEach((contract) => {
-        if (contract.alias === contractsRef.current.value) {
+        // if (contract.alias === contractsRef.current.value) {
+        if (value) {
           setCompilerName(contract.compilerName)
           setContractOptions({
             disabled: false,
@@ -306,9 +309,9 @@ export function ContractDropdownUI(props: ContractDropdownProps) {
     }
   }
 
-  const handleContractChange = (e) => {
-    const value = e.target.value
-    updateCompilerName()
+  const handleContractChange = (value) => {
+    // const value = e.target.value
+    updateCompilerName(value)
     props.setSelectedContract(value)
   }
 
@@ -381,8 +384,8 @@ export function ContractDropdownUI(props: ContractDropdownProps) {
     )
   }
 
-  console.log(contractssRef.current)
-
+  // console.log(contractssRef.current)
+  // console.log(currentContract, contractList, currentFile)
   let evmVersion = null
   try {
     evmVersion = JSON.parse(loadedContractData.metadata).settings.evmVersion
@@ -430,7 +433,7 @@ export function ContractDropdownUI(props: ContractDropdownProps) {
       </div>
       <div className="udapp_subcontainer">
         <CustomTooltip placement={'right'} tooltipClasses="text-nowrap text-left" tooltipId="remixUdappContractNamesTooltip" tooltipText={contractOptions.title}>
-          <select
+          {/* <select
             ref={contractsRef}
             value={currentContract}
             name={contractOptions.title.toString()}
@@ -452,36 +455,38 @@ export function ContractDropdownUI(props: ContractDropdownProps) {
                 </option>
               )
             })}
-          </select>
-        </CustomTooltip>
-        {/* <Dropdown id="selectExEnvOptions" data-id="settingsSelectEnvOptions" className="udapp_selectExEnvOptions">
-          <Dropdown.Toggle
-            as={CustomToggle}
-            id="dropdown-custom-components"
-            className="custom-select btn btn-light btn-block d-inline-block border border-dark form-control"
-            icon={null}
-          >
-            <div>{currentContract}</div>
-          </Dropdown.Toggle>
-          <Dropdown.Menu as={CustomMenu} className="custom-dropdown-items" data-id="custom-dropdown-items">
-            <Dropdown.Item disabled hidden>
-              <span className="">{intl.formatMessage({ id: 'udapp.noCompiledContracts' })}</span>
-            </Dropdown.Item>
-            {(contractList[currentFile] || []).map((contract, index) => (
-              <Dropdown.Item
-                key={index}
-                onClick={() => {
-                  handleContractChange(contract.alias)
-                }}
-                data-id={`dropdown-item-${contract}`}
-              >
-                <span className="">
-                  {contract.alias} - {contract.file}
-                </span>
+          </select> */}
+          <Dropdown id="selectExEnvOptions" data-id="settingsSelectEnvOptions" className="udapp_selectExEnvOptions">
+            <Dropdown.Toggle
+              as={CustomToggle}
+              id="dropdown-custom-components"
+              className="custom-select btn btn-light btn-block d-inline-block border border-dark form-control"
+              icon={null}
+            >
+              {currentContract} - {currentFile}
+            </Dropdown.Toggle>
+            <Dropdown.Menu as={CustomMenu} className="custom-dropdown-items" data-id="custom-dropdown-items">
+              <Dropdown.Item disabled hidden>
+                <span className="">{intl.formatMessage({ id: 'udapp.noCompiledContracts' })}</span>
               </Dropdown.Item>
-            ))}
-          </Dropdown.Menu>
-        </Dropdown> */}
+              {(contractList[currentFile] || []).map((contract, index) => (
+                <Dropdown.Item
+                  key={index}
+                  onClick={() => {
+                    handleContractChange(contract.alias)
+                  }}
+                  active={contract.alias === currentContract}
+                  data-id={`dropdown-item-${contract}`}
+                >
+                  <span className="">
+                    {contract.alias} - {contract.file}
+                  </span>
+                </Dropdown.Item>
+              ))}
+            </Dropdown.Menu>
+          </Dropdown>
+        </CustomTooltip>
+
         <span className="py-1" style={{ display: abiLabel.display }}>
           {abiLabel.content}
         </span>
