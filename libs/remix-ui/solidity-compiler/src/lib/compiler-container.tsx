@@ -3,7 +3,7 @@ import { FormattedMessage, useIntl } from 'react-intl'
 import semver from 'semver'
 import { CompilerContainerProps } from './types'
 import { ConfigurationSettings } from '@remix-project/remix-lib'
-import { checkSpecialChars, CustomTooltip, extractNameFromKey } from '@remix-ui/helper'
+import { checkSpecialChars, CustomTooltip, extractNameFromKey ,CustomMenu, CustomToggle} from '@remix-ui/helper'
 import { canUseWorker, baseURLBin, baseURLWasm, urlFromVersion, pathToURL } from '@remix-project/remix-solidity'
 import { compilerReducer, compilerInitialState } from './reducers/compiler'
 import { resetEditorMode, listenToEvents } from './actions/compiler'
@@ -14,6 +14,7 @@ import axios, { AxiosResponse } from 'axios'
 import './compiler-container.css'
 
 import './css/style.css'
+import { Dropdown } from 'react-bootstrap'
 const defaultPath = 'compiler_config.json'
 
 declare global {
@@ -776,7 +777,69 @@ export const CompilerContainer = (props: CompilerContainerProps) => {
             
           </div>
           <div>
-            <select
+            <Dropdown id="versionSelector" className="udapp_versionSelector">
+              <Dropdown.Toggle
+                as={CustomToggle}
+                id="dropdown-custom-components"
+                className="udapp_versionSelector_select btn btn-light btn-block w-100 d-inline-block border border-dark form-control"
+                icon={null}
+              >
+                {state.selectedVersion || state.defaultVersion}
+              </Dropdown.Toggle>
+              <Dropdown.Menu as={CustomMenu} className="custom-dropdown-items" data-id="custom-dropdown-items">
+                {state.allversions.length <= 0 && (
+                  <Dropdown.Item 
+                    disabled 
+                    onClick={() => {
+                      handleLoadVersion(state.defaultVersion)
+                    }} 
+                    data-id={state.selectedVersion === state.defaultVersion ? 'selected' : ''}>
+                    {/* <CustomTooltip placement={'right'}  tooltipId="info-recorder" tooltipText={state.defaultVersion}> */}
+                    <span className="select-ellipsis">{state.defaultVersion}</span>
+                    {/* </CustomTooltip> */}
+                    
+                  </Dropdown.Item>
+                )}
+                {state.allversions.length <= 0 && (
+                  <Dropdown.Item 
+                    disabled 
+                    onClick={() => {
+                      handleLoadVersion('builtin')
+                    }} 
+                    data-id={state.selectedVersion === 'builtin' ? 'selected' : ''}>
+                    <span className="">builtin</span>
+                  </Dropdown.Item>
+                )}
+                {state.customVersions.map((url, i) => (
+                  <Dropdown.Item 
+                    key={url} 
+                    onClick={() => {
+                      handleLoadVersion('custom')
+                    }} 
+                    data-id={state.selectedVersion === url ? 'selected' : ''} 
+                    value={url}>
+                    <span className="">custom</span>
+                  </Dropdown.Item>
+                ))}
+                {state.allversions.map((build, i) => {
+                  return _shouldBeAdded(build.longVersion) ? (
+                    <Dropdown.Item 
+                      key={build.path} 
+                      onClick={() => {
+                        handleLoadVersion(build.path)
+                      }} 
+                      value={build.path} 
+                      data-id={state.selectedVersion === build.path ? 'selected' : ''}>
+                      {/* <CustomTooltip placement={'right'} tooltipId="info-recorder" tooltipText={build.longVersion}> */}
+                      <span className="select-ellipsis">{build.longVersion}</span>
+                      {/* </CustomTooltip> */}
+                     
+                    </Dropdown.Item>
+                  ) : null
+                })}
+              </Dropdown.Menu>
+            </Dropdown>
+            {/* <select
               value={state.selectedVersion || state.defaultVersion}
               onChange={(e) => handleLoadVersion(e.target.value)}
               className="custom-select"
@@ -805,7 +868,7 @@ export const CompilerContainer = (props: CompilerContainerProps) => {
                   </option>
                 ) : null
               })}
-            </select>
+            </select> */}
           </div>
           {/* <div className="mb-2 flex-row-reverse remixui_nightlyBuilds custom-control custom-checkbox">
             <input className="mr-2 custom-control-input" id="nightlies" type="checkbox" onChange={handleNightliesChange} checked={state.includeNightlies} />

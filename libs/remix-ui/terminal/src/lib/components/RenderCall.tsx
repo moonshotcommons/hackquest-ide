@@ -47,7 +47,7 @@ const RenderCall = ({tx, resolvedData, logs, index, plugin, showTableHash, txDet
             <span className="remix_ui_terminal_txItemTitle">data:</span> {input}
           </div>
         </span>
-        <div className="remix_ui_terminal_buttons">
+        <div className="remix_ui_terminal_buttons d-none">
           <div className="remix_ui_terminal_debug btn btn-primary btn-sm" onClick={(event) => debug(event, tx)}>
             <FormattedMessage id="terminal.debug" />
           </div>
