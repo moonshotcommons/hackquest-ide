@@ -50,14 +50,14 @@ const HackquestHeader: FC = () => {
   const getBaseLink = () => {
     console.log(process.env.NODE_ENV)
     switch (process.env.NODE_ENV) {
-      case 'staging':
-        return 'https://staging.hackquest.io/'
-      case 'production':
-        return 'https://hackquest.io/'
-      case 'development':
-        return 'https://dev.hackquest.io/'
-      default:
-        return 'http://localhost:3000'
+    case 'staging':
+      return 'https://staging.hackquest.io/'
+    case 'production':
+      return 'https://hackquest.io/'
+    case 'development':
+      return 'https://dev.hackquest.io/'
+    default:
+      return 'http://localhost:3000'
     }
   }
 
@@ -89,7 +89,7 @@ const HackquestHeader: FC = () => {
       <ul className="hackquest-header-nav">
         {navList.map((nav) => {
           return (
-            <a href={nav.link} className="hackquest-header-nav-item">
+            <a href={nav.link} key={nav.link} className="hackquest-header-nav-item">
               <li className="" key={nav.name}>
                 {nav.name}
               </li>

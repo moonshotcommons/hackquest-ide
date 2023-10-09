@@ -61,8 +61,8 @@ const RemixUIPanelHeader = (props: RemixPanelProps) => {
                 props.sidePlugin.events.emit('toggle')
               }}
             >
-              <path d="M5 1L1 5L5 9" stroke="black" stroke-linecap="round" />
-              <path d="M11 1L7 5L11 9" stroke="black" stroke-linecap="round" />
+              <path d="M5 1L1 5L5 9" stroke="black" strokeLinecap="round" />
+              <path d="M11 1L7 5L11 9" stroke="black" strokeLinecap="round" />
             </svg>
           </div>
           {/* <div className="swapitHeaderInfoSection d-flex justify-content-between" data-id="swapitHeaderInfoSectionId" onClick={toggleClass}>

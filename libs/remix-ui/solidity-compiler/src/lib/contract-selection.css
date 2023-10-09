@@ -1,9 +1,12 @@
 .remixui_compilerSection {
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 .remixui_compilerSection .remixui_copyButton {
   font-size: 12px;
   color: #3e3e3e;
+}
+.remixui_compilerSection .remixui_copyButton:focus {
+  box-shadow: none;
 }
 .remixui_compilerSection .alert-warning {
   font-size: 14px;

@@ -594,7 +594,7 @@ export const RemixUiTerminal = (props: RemixUiTerminalProps) => {
               <i className="fas fa-ban" aria-hidden="true"></i>
             </CustomTooltip>
           </div>
-          <CustomTooltip placement="top" tooltipId="terminalClear" tooltipClasses="text-nowrap" tooltipText={<FormattedMessage id="terminal.pendingTransactions" />}>
+          {/* <CustomTooltip placement="top" tooltipId="terminalClear" tooltipClasses="text-nowrap" tooltipText={<FormattedMessage id="terminal.pendingTransactions" />}>
             <div className="mx-2">0</div>
           </CustomTooltip>
           <div className="h-80 mx-3 align-items-center remix_ui_terminal_listenOnNetwork custom-control custom-checkbox">
@@ -622,7 +622,7 @@ export const RemixUiTerminal = (props: RemixUiTerminalProps) => {
               placeholder={intl.formatMessage({ id: 'terminal.search' })}
               data-id="terminalInputSearch"
             />
-          </div>
+          </div> */}
         </div>
       </div>
       <div tabIndex={-1} className="remix_ui_terminal_container d-flex h-100 m-0 flex-column" data-id="terminalContainer">

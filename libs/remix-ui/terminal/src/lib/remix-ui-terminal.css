@@ -37,6 +37,7 @@ element.style {
   background-position: center 15%;
   background-size: auto calc(75% - 1.7em);
   background: #f4f4f4;
+  border-radius: 10px;
 }
 
 .remix_ui_terminal_journal {
@@ -49,6 +50,7 @@ element.style {
   white-space: pre-wrap;
   font-family: monospace;
   line-height: 2ch;
+  color: #8C8C8C;
 }
 .remix_ui_terminal_block > pre {
   max-height: 200px;
@@ -69,6 +71,7 @@ element.style {
 .remix_ui_terminal_input {
   outline: none;
   font-family: monospace;
+  background: transparent !important;
 }
 .remix_ui_terminal_search {
   width: 330px;
