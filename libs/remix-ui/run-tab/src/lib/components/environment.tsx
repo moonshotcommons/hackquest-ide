@@ -57,6 +57,7 @@ export function EnvironmentUI(props: EnvironmentProps) {
                   handleChangeExEnv(value)
                 }}
                 data-id={`dropdown-item-${value}`}
+                active={currentProvider?.content === content}
               >
                 <span className="">
                   {isL2({ value }) && 'L2 - '}

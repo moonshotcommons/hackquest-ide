@@ -24,6 +24,24 @@
 .hack-udapp-settings .udapp_environment #selectExEnvOptions button:focus {
   box-shadow: none;
 }
+.hack-udapp-settings .udapp_environment .udapp_selectExEnvOptions .custom-dropdown-items .dropdown-item.active,
+.hack-udapp-settings .udapp_environment .udapp_selectExEnvOptions .custom-dropdown-items .dropdown-item:active {
+  background-color: #f4f4f4;
+  color: #3e3e3e;
+  position: relative;
+}
+.hack-udapp-settings .udapp_environment .udapp_selectExEnvOptions .custom-dropdown-items .dropdown-item.active::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 14px;
+  background-image: url('/assets/img/select_icon.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 
 .hack-udapp-settings .udapp_account {
   display: flex;
@@ -54,6 +72,35 @@
 }
 .hack-udapp-settings .udapp_account .custom-dropdown-items {
   width: 100%;
+}
+
+.hack-udapp-settings .udapp_account .custom-dropdown-items .dropdown-item {
+  white-space: nowrap; /* 防止文字换行 */
+  overflow: hidden; /* 隐藏超出容器的部分 */
+  text-overflow: ellipsis; /* 使用省略号表示被省略的部分 */
+  width: 100%;
+  padding-right: 15%;
+}
+
+.hack-udapp-settings .udapp_account .custom-dropdown-items .dropdown-item.active,
+.hack-udapp-settings .udapp_account .custom-dropdown-items .dropdown-item:active {
+  /* width: 100%; */
+  background-color: #f4f4f4;
+  color: #3e3e3e;
+  position: relative;
+}
+
+.hack-udapp-settings .udapp_account .custom-dropdown-items .dropdown-item.active::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 14px;
+  background-image: url('/assets/img/select_icon.png');
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .hack-udapp-settings .udapp_account .fa-copy {
@@ -108,6 +155,37 @@
 .hack-udapp-settings .udapp_gasValueContainer .udapp_selectExEnvOptions .custom-dropdown-items {
   width: 100%;
 }
+.hack-udapp-settings .udapp_gasValueContainer .udapp_selectExEnvOptions .custom-dropdown-items.active {
+  background: #d9d9d9;
+}
+
+.hack-udapp-settings .udapp_gasValueContainer .udapp_selectExEnvOptions .custom-dropdown-items .dropdown-item {
+  white-space: nowrap; /* 防止文字换行 */
+  overflow: hidden; /* 隐藏超出容器的部分 */
+  text-overflow: ellipsis; /* 使用省略号表示被省略的部分 */
+  width: 100%;
+  padding-right: 15%;
+}
+.hack-udapp-settings .udapp_gasValueContainer .udapp_selectExEnvOptions .custom-dropdown-items .dropdown-item.active,
+.hack-udapp-settings .udapp_gasValueContainer .udapp_selectExEnvOptions .custom-dropdown-items .dropdown-item:active {
+  /* width: 100%; */
+  background-color: #f4f4f4;
+  color: #3e3e3e;
+  position: relative;
+}
+
+.hack-udapp-settings .udapp_gasValueContainer .udapp_selectExEnvOptions .custom-dropdown-items .dropdown-item.active::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 14px;
+  background-image: url('/assets/img/select_icon.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 
 .hack-udapp-settings .udapp_gasValueContainer .udapp_gasNval {
   background-color: #d9d9d9;
@@ -149,6 +227,62 @@
   color: #3e3e3e !important;
   border-radius: 0.1875rem;
   line-height: 100%;
+}
+
+.hack-udapp_container .udapp_subcontainer .udapp_selectExEnvOptions .custom-select {
+  /* background-color: #d9d9d9;
+  color: #3e3e3e !important;
+  border-radius: 0.1875rem;
+  line-height: 100%; */
+  background: #d9d9d9;
+  color: #3e3e3e;
+  border-radius: 0.1875rem !important;
+  border: 0.0625rem solid #d9d9d9 !important;
+  padding: 0.8rem 0.9375rem;
+  font-size: 0.875rem;
+  line-height: 100%;
+  height: fit-content !important;
+  overflow: hidden;
+}
+.hack-udapp_container .udapp_subcontainer .udapp_selectExEnvOptions .custom-select:focus {
+  box-shadow: none !important;
+  background: #d9d9d9;
+}
+
+.hack-udapp_container .udapp_subcontainer .udapp_selectExEnvOptions .custom-dropdown-items {
+  width: 100%;
+}
+.hack-udapp_container .udapp_subcontainer .udapp_selectExEnvOptions .custom-dropdown-items.active {
+  background: #d9d9d9;
+}
+
+.hack-udapp_container .udapp_subcontainer .udapp_selectExEnvOptions .custom-dropdown-items .dropdown-item {
+  white-space: nowrap; /* 防止文字换行 */
+  overflow: hidden; /* 隐藏超出容器的部分 */
+  text-overflow: ellipsis; /* 使用省略号表示被省略的部分 */
+  width: 100%;
+  padding-right: 15%;
+}
+
+.hack-udapp_container .udapp_subcontainer .udapp_selectExEnvOptions .custom-dropdown-items .dropdown-item.active,
+.hack-udapp_container .udapp_subcontainer .udapp_selectExEnvOptions .custom-dropdown-items .dropdown-item:active {
+  /* width: 100%; */
+  background-color: #f4f4f4;
+  color: #3e3e3e;
+  position: relative;
+}
+
+.hack-udapp_container .udapp_subcontainer .udapp_selectExEnvOptions .custom-dropdown-items .dropdown-item.active::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 14px;
+  background-image: url('/assets/img/select_icon.png');
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .hack-udapp_container::after {
