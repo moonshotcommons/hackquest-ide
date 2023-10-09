@@ -468,7 +468,7 @@ export function ContractDropdownUI(props: ContractDropdownProps) {
               {!currentContract && <span className="">{intl.formatMessage({ id: 'udapp.noCompiledContracts' })}</span>}
             </Dropdown.Toggle>
             <Dropdown.Menu as={CustomMenu} className="custom-dropdown-items" data-id="custom-dropdown-items">
-              <Dropdown.Item disabled>
+              <Dropdown.Item disabled hidden={!!currentContract}>
                 <span className="">{intl.formatMessage({ id: 'udapp.noCompiledContracts' })}</span>
               </Dropdown.Item>
               {(contractList[currentFile] || []).map((contract, index) => (
