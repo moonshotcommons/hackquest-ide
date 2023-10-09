@@ -4,8 +4,9 @@ import { FormattedMessage, useIntl } from 'react-intl'
 import { CopyToClipboard } from '@remix-ui/clipboard'
 import { AccountProps } from '../types'
 import { PassphrasePrompt } from './passphrase'
-import { CustomTooltip } from '@remix-ui/helper'
 
+import { Dropdown } from 'react-bootstrap'
+import { CustomMenu, CustomToggle, CustomTooltip } from '@remix-ui/helper'
 export function AccountUI(props: AccountProps) {
   const { selectedAccount, loadedAccounts } = props.accounts
   const accounts = Object.keys(loadedAccounts)
@@ -191,14 +192,20 @@ export function AccountUI(props: AccountProps) {
       <label className="udapp_settingsLabel">
         <FormattedMessage id="udapp.account" />
         <CustomTooltip placement={'top-start'} tooltipClasses="text-wrap" tooltipId="remixPlusWrapperTooltip" tooltipText={plusOpt.title}>
-          <span id="remixRunPlusWraper">
-            <i id="remixRunPlus" className={`fas fa-plus-circle udapp_icon ${plusOpt.classList}`} aria-hidden="true" onClick={newAccount}></i>
+          <span id="remixRunPlusWraper" onClick={newAccount} style={{ transform: 'scale(1.3)' }}>
+            {/* <i id="remixRunPlus" className={`fas fa-plus-circle udapp_icon ${plusOpt.classList}`} aria-hidden="true" ></i> */}
+
+            <svg width="12" height="12" id="remixRunPlus" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="6" cy="6" r="6" fill="#8C8C8C" />
+              <line x1="3.5" y1="6" x2="8.5" y2="6" stroke="white" />
+              <line x1="6" y1="3.5" x2="6" y2="8.5" stroke="white" />
+            </svg>
           </span>
         </CustomTooltip>
         {props.accounts.isRequesting && <i className="fa fa-spinner fa-pulse ml-2" aria-hidden="true"></i>}
       </label>
       <div className="udapp_account">
-        <select
+        {/* <select
           id="txorigin"
           data-id="runTabSelectAccount"
           name="txorigin"
@@ -213,8 +220,33 @@ export function AccountUI(props: AccountProps) {
               {loadedAccounts[value]}
             </option>
           ))}
-        </select>
-        <div style={{ marginLeft: '-10px' }}>
+        </select> */}
+
+        <Dropdown id="selectExEnvOptions" data-id="settingsSelectEnvOptions" className="udapp_selectExEnvOptions">
+          <Dropdown.Toggle
+            as={CustomToggle}
+            id="dropdown-custom-components"
+            className="custom-select btn btn-light btn-block d-inline-block border border-dark form-control"
+            icon={null}
+          >
+            {selectedAccount || ''}
+          </Dropdown.Toggle>
+          <Dropdown.Menu as={CustomMenu} className="custom-dropdown-items" data-id="custom-dropdown-items">
+            {accounts.map((value, index) => (
+              <Dropdown.Item
+                key={index}
+                onClick={() => {
+                  props.setAccount(value)
+                }}
+                data-id={`dropdown-item-${value}`}
+              >
+                <span className="">{loadedAccounts[value]}</span>
+              </Dropdown.Item>
+            ))}
+          </Dropdown.Menu>
+        </Dropdown>
+
+        <div style={{ marginLeft: '0px' }}>
           <CopyToClipboard tip={intl.formatMessage({ id: 'udapp.copyAccount' })} content={selectedAccount} direction="top" />
         </div>
         {/* <CustomTooltip placement={'top-start'} tooltipClasses="text-nowrap" tooltipId="remixSignMsgTooltip" tooltipText={<FormattedMessage id="udapp.signMsgUsingAccount" />}>

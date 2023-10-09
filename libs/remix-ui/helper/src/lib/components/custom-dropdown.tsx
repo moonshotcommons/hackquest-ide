@@ -1,8 +1,8 @@
 // The forwardRef is important!!
 
-import React, {Ref} from 'react'
-import {FormattedMessage, useIntl} from 'react-intl'
-import {CustomTooltip} from '@remix-ui/helper'
+import React, { Ref } from 'react'
+import { FormattedMessage, useIntl } from 'react-intl'
+import { CustomTooltip } from '@remix-ui/helper'
 
 // Dropdown needs access to the DOM node in order to position the Menu
 export const CustomToggle = React.forwardRef(
@@ -11,7 +11,7 @@ export const CustomToggle = React.forwardRef(
       children,
       onClick,
       icon,
-      className = ''
+      className = '',
     }: {
       children: React.ReactNode
       onClick: (e) => void
@@ -29,14 +29,20 @@ export const CustomToggle = React.forwardRef(
       className={className.replace('dropdown-toggle', '')}
     >
       <div className="d-flex">
-        <div className="mr-auto text-nowrap">{children}</div>
+        <div className="mr-auto text-nowrap" style={{ overflow: 'hidden' }}>
+          {children}
+        </div>
         {icon && (
           <div className="pr-1">
             <i className={`${icon} pr-1`}></i>
           </div>
         )}
         <div>
-          <i className="fad fa-sort-circle"></i>
+          {/* <i className="fad fa-sort-circle"></i> */}
+          <svg width="10" height="12" viewBox="0 0 10 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.71443 0.000557964L9.42871 4.71484L0.000139236 4.71484L4.71443 0.000557964Z" fill="#8C8C8C" />
+            <path d="M4.71429 11.9994L0 7.28516L9.42857 7.28516L4.71429 11.9994Z" fill="#8C8C8C" />
+          </svg>
         </div>
       </div>
     </button>
@@ -48,7 +54,7 @@ export const CustomIconsToggle = React.forwardRef(
     {
       onClick,
       icon,
-      className = ''
+      className = '',
     }: {
       children?: React.ReactNode
       onClick: () => void
@@ -73,7 +79,7 @@ export const CustomIconsToggle = React.forwardRef(
           tooltipId="remixHamburgerTooltip"
           tooltipText={<FormattedMessage id="filePanel.workspaceActions" />}
         >
-          <i style={{fontSize: 'large'}} className={`${icon}`} data-id="workspaceDropdownMenuIcon"></i>
+          <i style={{ fontSize: 'large' }} className={`${icon}`} data-id="workspaceDropdownMenuIcon"></i>
         </CustomTooltip>
       )}
     </span>
@@ -89,12 +95,12 @@ export const CustomMenu = React.forwardRef(
       style,
       'data-id': dataId,
       className,
-      'aria-labelledby': labeledBy
+      'aria-labelledby': labeledBy,
     }: {
-      'children': React.ReactNode
-      'style'?: React.CSSProperties
+      children: React.ReactNode
+      style?: React.CSSProperties
       'data-id'?: string
-      'className': string
+      className: string
       'aria-labelledby'?: string
     },
     ref: Ref<HTMLDivElement>
@@ -102,7 +108,7 @@ export const CustomMenu = React.forwardRef(
     const height = window.innerHeight * 0.6
     return (
       <div ref={ref} style={style} className={className} aria-labelledby={labeledBy} data-id={dataId}>
-        <ul className="overflow-auto list-unstyled mb-0" style={{maxHeight: height + 'px'}}>
+        <ul className="overflow-auto list-unstyled mb-0" style={{ maxHeight: height + 'px' }}>
           {children}
         </ul>
       </div>
@@ -116,7 +122,7 @@ export const ProxyAddressToggle = React.forwardRef(
       address,
       onClick,
       className = '',
-      onChange
+      onChange,
     }: {
       address: string
       onClick: (e) => void
@@ -143,8 +149,8 @@ export const ProxyAddressToggle = React.forwardRef(
           }}
           className="udapp_input form-control"
           value={address}
-          placeholder={intl.formatMessage({id: 'udapp.enterProxyAddress'})}
-          style={{width: '100%'}}
+          placeholder={intl.formatMessage({ id: 'udapp.enterProxyAddress' })}
+          style={{ width: '100%' }}
           data-id="ERC1967AddressInput"
         />
       </div>
@@ -158,11 +164,11 @@ export const ProxyDropdownMenu = React.forwardRef(
       children,
       style,
       className,
-      'aria-labelledby': labeledBy
+      'aria-labelledby': labeledBy,
     }: {
-      'children': React.ReactNode
-      'style'?: React.CSSProperties
-      'className': string
+      children: React.ReactNode
+      style?: React.CSSProperties
+      className: string
       'aria-labelledby'?: string
     },
     ref: Ref<HTMLDivElement>

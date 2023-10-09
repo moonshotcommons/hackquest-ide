@@ -41,11 +41,29 @@ const RemixUIPanelHeader = (props: RemixPanelProps) => {
         </h6>
         <div className="d-flex flex-row">
           <div className="d-flex flex-row">
-            {plugin?.profile?.maintainedBy?.toLowerCase() === 'remix' && (
+            {/* {plugin?.profile?.maintainedBy?.toLowerCase() === 'remix' && (
               <CustomTooltip placement="right-end" tooltipId="maintainedByTooltip" tooltipClasses="text-nowrap" tooltipText={<FormattedMessage id="panel.maintainedByRemix" />}>
                 <i aria-hidden="true" className="text-success mt-1 px-1 fas fa-check"></i>
               </CustomTooltip>
-            )}
+            )} */}
+            <svg
+              width="12"
+              height="10"
+              viewBox="0 0 12 10"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              style={{ cursor: 'pointer' }}
+              onClick={() => {
+                // const p = Object.values(props.plugins).find((pluginRecord) => {
+                //   return pluginRecord.active === false
+                // })
+                // setPlugin(p)
+                props.sidePlugin.events.emit('toggle')
+              }}
+            >
+              <path d="M5 1L1 5L5 9" stroke="black" stroke-linecap="round" />
+              <path d="M11 1L7 5L11 9" stroke="black" stroke-linecap="round" />
+            </svg>
           </div>
           {/* <div className="swapitHeaderInfoSection d-flex justify-content-between" data-id="swapitHeaderInfoSectionId" onClick={toggleClass}>
             <CustomTooltip placement="right-end" tooltipText={<FormattedMessage id="panel.pluginInfo" />} tooltipId="pluginInfoTooltip" tooltipClasses="text-nowrap">

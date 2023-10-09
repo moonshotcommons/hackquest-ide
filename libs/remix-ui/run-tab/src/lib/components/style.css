@@ -25,11 +25,39 @@
   box-shadow: none;
 }
 
+.hack-udapp-settings .udapp_account {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hack-udapp-settings .udapp_account .udapp_selectExEnvOptions {
+  width: 93%;
+  /* overflow: hidden; */
+
+  position: relative;
+}
+
 .hack-udapp-settings .udapp_account .custom-select {
-  background-color: #d9d9d9;
-  color: #3e3e3e !important;
-  border-radius: 0.1875rem;
+  background: #d9d9d9;
+  color: #3e3e3e;
+  border-radius: 0.1875rem !important;
+  border: 0.0625rem solid #d9d9d9 !important;
+  padding: 0.75rem 0.9375rem;
+  font-size: 0.875rem;
   line-height: 100%;
+  height: fit-content !important;
+  overflow: hidden;
+}
+.hack-udapp-settings .udapp_account .custom-select:focus {
+  box-shadow: none !important;
+  background: #d9d9d9;
+}
+.hack-udapp-settings .udapp_account .custom-dropdown-items {
+  width: 100%;
+}
+
+.hack-udapp-settings .udapp_account .fa-copy {
+  margin-left: 0.5rem !important;
 }
 
 .hack-udapp-settings .udapp_account .custom-select > option {
@@ -44,6 +72,41 @@
   padding: 0 !important;
   /* padding-left: .125rem; */
   margin-left: 17.6px !important;
+}
+
+.hack-udapp-settings .udapp_gasValueContainer {
+  /* width: 90%; */
+  display: flex;
+  gap: 10px;
+  position: relative;
+}
+.hack-udapp-settings .udapp_gasValueContainer .udapp_selectExEnvOptions {
+  /* width: 90%; */
+  position: relative;
+}
+
+.hack-udapp-settings .udapp_gasValueContainer .udapp_selectExEnvOptions .custom-select {
+  /* background-color: #d9d9d9;
+  color: #3e3e3e !important;
+  border-radius: 0.1875rem;
+  line-height: 100%; */
+  background: #d9d9d9;
+  color: #3e3e3e;
+  border-radius: 0.1875rem !important;
+  border: 0.0625rem solid #d9d9d9 !important;
+  padding: 0.8rem 0.9375rem;
+  font-size: 0.875rem;
+  line-height: 100%;
+  height: fit-content !important;
+  overflow: hidden;
+}
+.hack-udapp-settings .udapp_gasValueContainer .udapp_selectExEnvOptions .custom-select:focus {
+  box-shadow: none !important;
+  background: #d9d9d9;
+}
+
+.hack-udapp-settings .udapp_gasValueContainer .udapp_selectExEnvOptions .custom-dropdown-items {
+  width: 100%;
 }
 
 .hack-udapp-settings .udapp_gasValueContainer .udapp_gasNval {
