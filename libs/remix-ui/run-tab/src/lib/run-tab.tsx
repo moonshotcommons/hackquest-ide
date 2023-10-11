@@ -251,7 +251,7 @@ export function RunTabUI(props: RunTabProps) {
   return (
     <Fragment>
       <div className="udapp_runTabView run-tab" id="runTabView" data-id="runTabView" style={{ height: '100%' }}>
-        <div className="list-group list-group-flush scroll-wrap-y scroll-wrap-x" style={{ height: '100%' }}>
+        <div className="list-group list-group-flush" style={{ height: '100%' }}>
           <SettingsUI
             networkName={runTab.networkName}
             personalMode={runTab.personalMode}
