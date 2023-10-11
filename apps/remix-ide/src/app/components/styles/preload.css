@@ -1,24 +1,76 @@
 .preload-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  height: 100vh;
+  background-color: #fff4ce;
 }
 
 .preload-info-container {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  max-width: 400px;
 }
 
 .preload-info-container .btn {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .preload-logo {
-    min-width: 200px;
-    max-width: 240px;
-    padding-bottom: 1.5rem !important;
+  padding-bottom: 1.5rem !important;
+}
+
+.preload-text-logo-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: black;
+  font-family: 'NEXT BOOK';
+  font-size: 14px;
+  letter-spacing: 0.28px;
+}
+
+.preload-logo-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding-top: 40vh;
+  padding-bottom: 30vh;
+  /* border: 1px solid red; */
+}
+
+.preload-logo-img {
+  position: absolute;
+  display: block;
+  /* left: 50%; */
+  /* top: 50%; */
+  /* transform: translateX(-50%); */
+  /* transform: translateY(-50%); */
+}
+
+.preload-loading {
+  width: 110px;
+  height: 110px;
+  padding: 0;
+  margin: 0;
+  animation: spin 1s infinite linear;
+}
+.preload-loading img {
+  width: 110px;
+  height: 110px;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
