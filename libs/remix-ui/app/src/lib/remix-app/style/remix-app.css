@@ -59,7 +59,7 @@ pre {
 .sidepanel {
   display: flex;
   flex-direction: row-reverse;
-  width: 330px;
+  width: 320px;
   transition: width 0.25s;
 }
 .highlightcode {
