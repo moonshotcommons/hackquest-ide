@@ -31,14 +31,22 @@
         "development": {
           "optimization": false,
           "generateIndexHtml": true,
-          "extractCss": false
-
+          "extractCss": false,
+          "mode":"development"
+        },
+        "staging": {
+          "optimization": true,
+          "generateIndexHtml": true,
+          "extractCss": false,
+          "vendorChunk": false,
+          "mode":"staging"
         },
         "production": {
           "optimization": true,
           "generateIndexHtml": true,
           "extractCss": false,
-          "vendorChunk": false
+          "vendorChunk": false,
+          "mode":"production"
         }
       }
     },
@@ -59,6 +67,10 @@
           "buildTarget": "remix-ide:build:development",
           "port": 8080,
           "hmr": true
+        },
+        "staging": {
+          "buildTarget": "remix-ide:build:staging",
+          "port": 8080
         },
         "production": {
           "buildTarget": "remix-ide:build:production",
