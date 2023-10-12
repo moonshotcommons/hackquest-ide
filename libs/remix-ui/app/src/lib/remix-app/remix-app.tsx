@@ -1,16 +1,19 @@
-import React, {useEffect, useRef, useState} from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './style/remix-app.css'
-import {RemixUIMainPanel} from '@remix-ui/panel'
+import { RemixUIMainPanel } from '@remix-ui/panel'
 import MatomoDialog from './components/modals/matomo'
 import OriginWarning from './components/modals/origin-warning'
 import DragBar from './components/dragbar/dragbar'
-import {AppProvider} from './context/provider'
+import { AppProvider } from './context/provider'
 import AppDialogs from './components/modals/dialogs'
 import DialogViewPlugin from './components/modals/dialogViewPlugin'
-import {AppContext} from './context/context'
-import {IntlProvider, FormattedMessage} from 'react-intl'
-import {CustomTooltip} from '@remix-ui/helper'
-
+import { AppContext } from './context/context'
+import { IntlProvider, FormattedMessage } from 'react-intl'
+import { CustomTooltip } from '@remix-ui/helper'
+// import { HackQuestHeader } from '@remix-ui/'
+import './style/hackquest-app.css'
+import HackquestHeader from './components/header'
+import HackquestFooter from './components/footer'
 interface IRemixAppUi {
   app: any
 }
@@ -20,9 +23,9 @@ const RemixApp = (props: IRemixAppUi) => {
   const [hideSidePanel, setHideSidePanel] = useState<boolean>(false)
   const [maximiseTrigger, setMaximiseTrigger] = useState<number>(0)
   const [resetTrigger, setResetTrigger] = useState<number>(0)
-  const [locale, setLocale] = useState<{code: string; messages: any}>({
+  const [locale, setLocale] = useState<{ code: string; messages: any }>({
     code: 'en',
-    messages: {}
+    messages: {},
   })
   const sidePanelRef = useRef(null)
 
@@ -78,40 +81,42 @@ const RemixApp = (props: IRemixAppUi) => {
     showMatamo: props.app.showMatamo,
     appManager: props.app.appManager,
     modal: props.app.notification,
-    layout: props.app.layout
+    layout: props.app.layout,
   }
 
   return (
     //@ts-ignore
     <IntlProvider locale={locale.code} messages={locale.messages}>
       <AppProvider value={value}>
-        <OriginWarning></OriginWarning>
-        <MatomoDialog hide={!appReady}></MatomoDialog>
-        <div className={`remixIDE ${appReady ? '' : 'd-none'}`} data-id="remixIDE">
-          <div id="icon-panel" data-id="remixIdeIconPanel" className="custom_icon_panel iconpanel bg-light">
+        {/* <OriginWarning></OriginWarning> */}
+        {/* <MatomoDialog hide={!appReady}></MatomoDialog> */}
+        <HackquestHeader></HackquestHeader>
+        <div className={`remixIDE hackquestIDE ${appReady ? '' : 'd-none'}`} data-id="remixIDE">
+          <div id="icon-panel" data-id="remixIdeIconPanel" className="custom_icon_panel iconpanel bg-light hack-icon-panel">
             {props.app.menuicons.render()}
           </div>
           <div ref={sidePanelRef} id="side-panel" data-id="remixIdeSidePanel" className={`sidepanel border-right border-left ${hideSidePanel ? 'd-none' : ''}`}>
             {props.app.sidePanel.render()}
           </div>
-          <DragBar
+          {/* <DragBar
             resetTrigger={resetTrigger}
             maximiseTrigger={maximiseTrigger}
             minWidth={285}
             refObject={sidePanelRef}
             hidden={hideSidePanel}
             setHideStatus={setHideSidePanel}
-          ></DragBar>
-          <div id="main-panel" data-id="remixIdeMainPanel" className="mainpanel d-flex">
+          ></DragBar> */}
+          <div id="main-panel" data-id="remixIdeMainPanel" className="mainpanel d-flex hack-main-panel">
             <RemixUIMainPanel Context={AppContext}></RemixUIMainPanel>
-            <CustomTooltip placement="bottom" tooltipId="overlay-tooltip-all-tabs" tooltipText={<FormattedMessage id="remixApp.scrollToSeeAllTabs" />}>
+            {/* <CustomTooltip placement="bottom" tooltipId="overlay-tooltip-all-tabs" tooltipText={<FormattedMessage id="remixApp.scrollToSeeAllTabs" />}>
               <div className="remix-ui-tabs_end remix-bg-opacity position-absolute position-fixed"></div>
-            </CustomTooltip>
+            </CustomTooltip> */}
           </div>
         </div>
         <div>{props.app.hiddenPanel.render()}</div>
         <AppDialogs></AppDialogs>
         <DialogViewPlugin></DialogViewPlugin>
+        <HackquestFooter></HackquestFooter>
       </AppProvider>
     </IntlProvider>
   )

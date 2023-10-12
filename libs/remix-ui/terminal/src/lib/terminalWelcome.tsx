@@ -1,12 +1,12 @@
-import React, {useEffect} from 'react' // eslint-disable-line
-import {FormattedMessage} from 'react-intl'
+import React, { useEffect } from 'react' // eslint-disable-line
+import { FormattedMessage } from 'react-intl'
 
-const TerminalWelcomeMessage = ({packageJson, storage}) => {
+const TerminalWelcomeMessage = ({ packageJson, storage }) => {
   return (
     <div className="remix_ui_terminal_block px-4 " data-id="block_null">
       <div className="remix_ui_terminal_welcome">
         {' '}
-        <FormattedMessage id="terminal.welcomeText1" /> Remix {packageJson}{' '}
+        <FormattedMessage id="terminal.welcomeText1" /> HackQuest {packageJson}{' '}
       </div>
       <br />
       <div className="">
@@ -54,7 +54,7 @@ const TerminalWelcomeMessage = ({packageJson, storage}) => {
             ethers.js
           </a>{' '}
         </li>
-        <li key="remix-console">remix</li>
+        <li key="remix-console">hackquest</li>
       </ul>
       <div>
         <FormattedMessage id="terminal.welcomeText10" />.

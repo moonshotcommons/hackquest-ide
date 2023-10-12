@@ -5,9 +5,10 @@ import {PublishToStorage} from '@remix-ui/publish-to-storage' // eslint-disable-
 import {TreeView, TreeViewItem} from '@remix-ui/tree-view' // eslint-disable-line
 import {CopyToClipboard} from '@remix-ui/clipboard' // eslint-disable-line
 import {saveAs} from 'file-saver'
+import './contract-selection.css'
 
 import './css/style.css'
-import {CustomTooltip} from '@remix-ui/helper'
+// import {CustomTooltip} from '@remix-ui/helper'
 const _paq = (window._paq = window._paq || [])
 
 export const ContractSelection = (props: ContractSelectionProps) => {
@@ -236,10 +237,10 @@ export const ContractSelection = (props: ContractSelectionProps) => {
   return (
     // define swarm logo
     <>
-      {contractList.length ? (
-        <section className="remixui_compilerSection pt-3">
+      {contractList?.length ? (
+        <section className="remixui_compilerSection">
           {/* Select Compiler Version */}
-          <div className="mb-3">
+          {/* <div className="mb-3">
             <label className="remixui_compilerLabel form-check-label" htmlFor="compiledContracts">
               <FormattedMessage id="solidity.contract" />
             </label>
@@ -250,9 +251,9 @@ export const ContractSelection = (props: ContractSelectionProps) => {
                 </option>
               ))}
             </select>
-          </div>
-          <article className="mt-2 pb-0">
-            <button
+          </div> */}
+          <article className="pb-0">
+            {/* <button
               id="publishOnIpfs"
               className="btn btn-secondary btn-block"
               onClick={() => {
@@ -315,7 +316,7 @@ export const ContractSelection = (props: ContractSelectionProps) => {
                   <FormattedMessage id="solidity.compilationDetails" />
                 </span>
               </CustomTooltip>
-            </button>
+            </button> */}
             {/* Copy to Clipboard */}
             <div className="remixui_contractHelperButtons">
               <div className="input-group">
@@ -338,15 +339,15 @@ export const ContractSelection = (props: ContractSelectionProps) => {
           </article>
         </section>
       ) : (
-        <section className="remixui_container clearfix">
-          <article className="px-2 mt-2 pb-0 d-flex w-100">
-            <span className="mt-2 mx-3 w-100 alert alert-warning" role="alert">
+        <section className="remixui_container clearfix no-contract-compiled">
+          <article className="mt-2 pb-0 d-flex w-100">
+            <span className="mt-2 w-100 alert alert-warning" role="alert">
               <FormattedMessage id="solidity.noContractCompiled" />
             </span>
           </article>
         </section>
       )}
-      <PublishToStorage api={api} storage={storage} contract={contractsDetails[selectedContract]} resetStorage={resetStorage} />
+      {/* <PublishToStorage api={api} storage={storage} contract={contractsDetails[selectedContract]} resetStorage={resetStorage} /> */}
     </>
   )
 }

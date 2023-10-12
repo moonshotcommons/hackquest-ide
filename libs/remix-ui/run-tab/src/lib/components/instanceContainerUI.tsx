@@ -15,7 +15,7 @@ export function InstanceContainerUI(props: InstanceContainerProps) {
   const intl = useIntl()
 
   return (
-    <div className="udapp_instanceContainer mt-3 border-0 list-group-item">
+    <div className="udapp_instanceContainer mt-3 border-0 list-group-item hack-udapp_instanceContainer">
       <div className="d-flex justify-content-between align-items-center pl-2 mb-2">
         <CustomTooltip placement="top-start" tooltipClasses="text-nowrap" tooltipId="deployAndRunClearInstancesTooltip" tooltipText={<FormattedMessage id="udapp.tooltipText6" />}>
           <label className="udapp_deployedContracts">
@@ -34,7 +34,7 @@ export function InstanceContainerUI(props: InstanceContainerProps) {
         ) : null}
       </div>
       {instanceList.length > 0 ? (
-        <div>
+        <div className="udapp_instance-wrap">
           {' '}
           {props.instances.instanceList.map((instance, index) => {
             return (
@@ -56,6 +56,12 @@ export function InstanceContainerUI(props: InstanceContainerProps) {
         </div>
       ) : (
         <span className="mx-2 mt-3 alert alert-warning" data-id="deployAndRunNoInstanceText" role="alert">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginRight: '8px' }}>
+            <circle cx="10" cy="10" r="10" fill="#FF624D" />
+            <circle cx="10" cy="5" r="1" fill="white" />
+            <rect x="9" y="7" width="2" height="9" rx="1" fill="white" />
+          </svg>
+
           <FormattedMessage id="udapp.deployAndRunNoInstanceText" />
         </span>
       )}

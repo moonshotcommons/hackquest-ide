@@ -1,0 +1,22 @@
+.remixui_compilerSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.remixui_compilerSection .remixui_copyButton {
+  font-size: 12px;
+  color: #3e3e3e;
+}
+.remixui_compilerSection .remixui_copyButton:focus {
+  box-shadow: none;
+}
+.remixui_compilerSection .alert-warning {
+  font-size: 14px;
+}
+.no-contract-compiled .alert-warning {
+  color: #3E3E3E;
+  font-size: 14px;
+  letter-spacing: 0.28px;
+  border:0.5px solid #FF624D;
+  background: #FFF7F5;
+}

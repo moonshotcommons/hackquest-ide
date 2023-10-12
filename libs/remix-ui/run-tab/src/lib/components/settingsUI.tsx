@@ -1,19 +1,20 @@
 // eslint-disable-next-line no-use-before-define
 import React from 'react'
-import {SettingsProps} from '../types'
-import {EnvironmentUI} from './environment'
-import {NetworkUI} from './network'
-import {AccountUI} from './account'
-import {GasPriceUI} from './gasPrice'
-import {ValueUI} from './value'
+import { SettingsProps } from '../types'
+import { EnvironmentUI } from './environment'
+import { NetworkUI } from './network'
+import { AccountUI } from './account'
+import { GasPriceUI } from './gasPrice'
+import { ValueUI } from './value'
+import './style.css'
 
 export function SettingsUI(props: SettingsProps) {
   //   this._deps.config.events.on('settings/personal-mode_changed', this.onPersonalChange.bind(this))
 
   return (
-    <div className="udapp_settings">
+    <div className="udapp_settings hack-udapp-settings">
       <EnvironmentUI selectedEnv={props.selectExEnv} providers={props.providers} setExecutionContext={props.setExecutionContext} />
-      <NetworkUI networkName={props.networkName} />
+      {/* <NetworkUI networkName={props.networkName} /> */}
       <AccountUI
         personalMode={props.personalMode}
         selectExEnv={props.selectExEnv}
@@ -27,7 +28,7 @@ export function SettingsUI(props: SettingsProps) {
         signMessageWithAddress={props.signMessageWithAddress}
         passphrase={props.passphrase}
       />
-      <GasPriceUI gasLimit={props.gasLimit} setGasFee={props.setGasFee} />
+      {/* <GasPriceUI gasLimit={props.gasLimit} setGasFee={props.setGasFee} /> */}
       <ValueUI setUnit={props.setUnit} sendValue={props.sendValue} sendUnit={props.sendUnit} setSendValue={props.setSendValue} />
     </div>
   )

@@ -21,15 +21,16 @@ const profile = {
   documentation: 'https://remix-ide.readthedocs.io/en/latest/compile.html',
   version: packageJson.version,
   maintainedBy: 'Remix',
-  methods: ['getCompilationResult', 'compile', 'compileWithParameters', 'setCompilerConfig', 'compileFile', 'getCompilerState', 'getCompilerParameters', 'getCompiler']
+  methods: ['getCompilationResult', 'compile', 'compileWithParameters', 'setCompilerConfig', 'compileFile', 'getCompilerState', 'getCompilerParameters', 'getCompiler'],
 }
 
 // EditorApi:
 // - events: ['compilationFinished'],
 // - methods: ['getCompilationResult']
 
-class CompileTab extends CompilerApiMixin(ViewPlugin) { // implements ICompilerApi
-  constructor (config, fileManager) {
+class CompileTab extends CompilerApiMixin(ViewPlugin) {
+  // implements ICompilerApi
+  constructor(config, fileManager) {
     super(profile)
     this.fileManager = fileManager
     this.config = config
@@ -42,11 +43,11 @@ class CompileTab extends CompilerApiMixin(ViewPlugin) { // implements ICompilerA
     this.el.setAttribute('id', 'compileTabView')
   }
 
-  renderComponent () {
+  renderComponent() {
     // empty method, is a state update needed?
   }
 
-  onCurrentFileChanged () {
+  onCurrentFileChanged() {
     this.renderComponent()
   }
 
@@ -54,39 +55,43 @@ class CompileTab extends CompilerApiMixin(ViewPlugin) { // implements ICompilerA
   //   this.renderComponent()
   // }
 
-  onSetWorkspace () {
+  onSetWorkspace() {
     this.renderComponent()
   }
 
-  onFileRemoved () {
+  onFileRemoved() {
     this.renderComponent()
   }
 
-  onNoFileSelected () {
+  onNoFileSelected() {
     this.renderComponent()
   }
 
-  onFileClosed () {
+  onFileClosed() {
     this.renderComponent()
   }
 
-  onCompilationFinished () {
+  onCompilationFinished() {
     this.renderComponent()
   }
 
-  render () {
-    return <div id='compileTabView'><SolidityCompiler api={this}/></div>
+  render() {
+    return (
+      <div id="compileTabView">
+        <SolidityCompiler api={this} />
+      </div>
+    )
   }
 
-  async compileWithParameters (compilationTargets, settings) {
+  async compileWithParameters(compilationTargets, settings) {
     return await super.compileWithParameters(compilationTargets, settings)
   }
 
-  getCompilationResult () {
+  getCompilationResult() {
     return super.getCompilationResult()
   }
 
-  getFileManagerMode () {
+  getFileManagerMode() {
     return this.fileManager.mode
   }
 
@@ -95,7 +100,7 @@ class CompileTab extends CompilerApiMixin(ViewPlugin) { // implements ICompilerA
    * This function is used by remix-plugin compiler API.
    * @param {object} settings {evmVersion, optimize, runs, version, language}
    */
-  setCompilerConfig (settings) {
+  setCompilerConfig(settings) {
     super.setCompilerConfig(settings)
     this.renderComponent()
     // @todo(#2875) should use loading compiler return value to check whether the compiler is loaded instead of "setInterval"
@@ -104,16 +109,16 @@ class CompileTab extends CompilerApiMixin(ViewPlugin) { // implements ICompilerA
     this.call('notification', 'toast', compilerConfigChangedToastMsg(this.currentRequest.from, value))
   }
 
-  compile (fileName) {
+  compile(fileName) {
     if (!isNative(this.currentRequest.from)) this.call('notification', 'toast', compileToastMsg(this.currentRequest.from, fileName))
     super.compile(fileName)
   }
 
-  compileFile (event) {
+  compileFile(event) {
     return super.compileFile(event)
   }
 
-  async onActivation () {
+  async onActivation() {
     super.onActivation()
     this.on('filePanel', 'workspaceInitializationCompleted', () => {
       this.call('filePanel', 'registerContextMenuItem', {
@@ -124,7 +129,7 @@ class CompileTab extends CompilerApiMixin(ViewPlugin) { // implements ICompilerA
         extension: ['.sol'],
         path: [],
         pattern: [],
-        group: 6
+        group: 6,
       })
     })
     try {
@@ -134,27 +139,27 @@ class CompileTab extends CompilerApiMixin(ViewPlugin) { // implements ICompilerA
     }
   }
 
-  getCompiler () {
+  getCompiler() {
     return this.compileTabLogic.compiler
   }
 
-  getCompilerParameters () {
+  getCompilerParameters() {
     const params = this.queryParams.get()
     params.evmVersion = params.evmVersion === 'null' || params.evmVersion === 'undefined' ? null : params.evmVersion
-    params.optimize = (params.optimize === 'false' || params.optimize === null || params.optimize === undefined) ? false : params.optimize
+    params.optimize = params.optimize === 'false' || params.optimize === null || params.optimize === undefined ? false : params.optimize
     params.optimize = params.optimize === 'true' ? true : params.optimize
     return params
   }
 
-  setCompilerParameters (params) {
+  setCompilerParameters(params) {
     this.queryParams.update(params)
   }
 
-  async getAppParameter (name) {
+  async getAppParameter(name) {
     return await this.call('config', 'getAppParameter', name)
   }
 
-  async setAppParameter (name, value) {
+  async setAppParameter(name, value) {
     await this.call('config', 'setAppParameter', name, value)
   }
 }

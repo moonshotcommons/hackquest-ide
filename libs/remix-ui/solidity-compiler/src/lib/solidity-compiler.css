@@ -1,0 +1,10 @@
+#compileTabView .remixui_errorBlobs {
+  padding: 0;
+}
+#compileTabView .complie-error-content .alert-warning {
+  color: #3E3E3E;
+  font-size: 14px;
+  letter-spacing: 0.28px;
+  border:0.5px solid #FF624D;
+  background: #FFF7F5;
+}

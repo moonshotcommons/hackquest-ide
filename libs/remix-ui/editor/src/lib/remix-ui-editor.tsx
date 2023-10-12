@@ -129,27 +129,28 @@ export interface EditorUIProps {
 }
 export const EditorUI = (props: EditorUIProps) => {
   const [, setCurrentBreakpoints] = useState({})
-  const defaultEditorValue = `
-  \t\t\t\t\t\t\t ____    _____   __  __   ___  __  __   ___   ____    _____ 
-  \t\t\t\t\t\t\t|  _ \\  | ____| |  \\/  | |_ _| \\ \\/ /  |_ _| |  _ \\  | ____|
-  \t\t\t\t\t\t\t| |_) | |  _|   | |\\/| |  | |   \\  /    | |  | | | | |  _|  
-  \t\t\t\t\t\t\t|  _ <  | |___  | |  | |  | |   /  \\    | |  | |_| | | |___ 
-  \t\t\t\t\t\t\t|_| \\_\\ |_____| |_|  |_| |___| /_/\\_\\  |___| |____/  |_____|\n\n
-  \t\t\t\t\t\t\tKeyboard Shortcuts:\n
-  \t\t\t\t\t\t\t\tCTRL + S: Compile the current contract\n
-  \t\t\t\t\t\t\t\tCTRL + Shift + F : Open the File Explorer\n
-  \t\t\t\t\t\t\t\tCTRL + Shift + A : Open the Plugin Manager\n
-  \t\t\t\t\t\t\t\tCTRL + SHIFT + S: Compile the current contract & Run an associated script\n
-  \t\t\t\t\t\t\tEditor Keyboard Shortcuts:\n
-  \t\t\t\t\t\t\t\tCTRL + Alt + F : Format the code in the current file\n
-  \t\t\t\t\t\t\tImportant Links:\n
-  \t\t\t\t\t\t\t\tOfficial website about the Remix Project: https://remix-project.org/\n
-  \t\t\t\t\t\t\t\tOfficial documentation: https://remix-ide.readthedocs.io/en/latest/\n
-  \t\t\t\t\t\t\t\tGithub: https://github.com/ethereum/remix-project\n
-  \t\t\t\t\t\t\t\tGitter: https://gitter.im/ethereum/remix\n
-  \t\t\t\t\t\t\t\tMedium: https://medium.com/remix-ide\n
-  \t\t\t\t\t\t\t\tTwitter: https://twitter.com/ethereumremix\n
-  `
+  // const defaultEditorValue = `
+  // \t\t\t\t\t\t\t ____    _____   __  __   ___  __  __   ___   ____    _____
+  // \t\t\t\t\t\t\t|  _ \\  | ____| |  \\/  | |_ _| \\ \\/ /  |_ _| |  _ \\  | ____|
+  // \t\t\t\t\t\t\t| |_) | |  _|   | |\\/| |  | |   \\  /    | |  | | | | |  _|
+  // \t\t\t\t\t\t\t|  _ <  | |___  | |  | |  | |   /  \\    | |  | |_| | | |___
+  // \t\t\t\t\t\t\t|_| \\_\\ |_____| |_|  |_| |___| /_/\\_\\  |___| |____/  |_____|\n\n
+  // \t\t\t\t\t\t\tKeyboard Shortcuts:\n
+  // \t\t\t\t\t\t\t\tCTRL + S: Compile the current contract\n
+  // \t\t\t\t\t\t\t\tCTRL + Shift + F : Open the File Explorer\n
+  // \t\t\t\t\t\t\t\tCTRL + Shift + A : Open the Plugin Manager\n
+  // \t\t\t\t\t\t\t\tCTRL + SHIFT + S: Compile the current contract & Run an associated script\n
+  // \t\t\t\t\t\t\tEditor Keyboard Shortcuts:\n
+  // \t\t\t\t\t\t\t\tCTRL + Alt + F : Format the code in the current file\n
+  // \t\t\t\t\t\t\tImportant Links:\n
+  // \t\t\t\t\t\t\t\tOfficial website about the Remix Project: https://remix-project.org/\n
+  // \t\t\t\t\t\t\t\tOfficial documentation: https://remix-ide.readthedocs.io/en/latest/\n
+  // \t\t\t\t\t\t\t\tGithub: https://github.com/ethereum/remix-project\n
+  // \t\t\t\t\t\t\t\tGitter: https://gitter.im/ethereum/remix\n
+  // \t\t\t\t\t\t\t\tMedium: https://medium.com/remix-ide\n
+  // \t\t\t\t\t\t\t\tTwitter: https://twitter.com/ethereumremix\n
+  // `
+  const defaultEditorValue = ``
   const pasteCodeRef = useRef(false)
   const editorRef = useRef(null)
   const monacoRef = useRef<Monaco>(null)
@@ -600,47 +601,47 @@ export const EditorUI = (props: EditorUIProps) => {
       }
     })
 
-    editor.onDidPaste((e) => {
-      if (!pasteCodeRef.current && e && e.range && e.range.startLineNumber >= 0 && e.range.endLineNumber >= 0 && e.range.endLineNumber - e.range.startLineNumber > 10) {
-        const modalContent: AlertModal = {
-          id: 'newCodePasted',
-          title: 'Pasted Code Alert',
-          message: (
-            <div>
-              {' '}
-              <i className="fas fa-exclamation-triangle text-danger mr-1"></i>
-              You have just pasted a code snippet or contract in the editor.
-              <div>
-                Make sure you fully understand this code before deploying or interacting with it. Don't get scammed!
-                <div className="mt-2">
-                  Running untrusted code can put your wallet <span className="text-warning"> at risk </span>. In a worst-case scenario, you could{' '}
-                  <span className="text-warning">lose all your money</span>.
-                </div>
-                <div className="text-warning  mt-2">If you don't fully understand it, please don't run this code.</div>
-                <div className="mt-2">If you are not a smart contract developer, ask someone you trust who has the skills to determine if this code is safe to use.</div>
-                <div className="mt-2">
-                  See{' '}
-                  <a target="_blank" href="https://remix-ide.readthedocs.io/en/latest/security.html">
-                    {' '}
-                    these recommendations{' '}
-                  </a>{' '}
-                  for more information.
-                </div>
-              </div>
-            </div>
-          ),
-        }
-        props.plugin.call('notification', 'alert', modalContent)
-        pasteCodeRef.current = true
-      }
-    })
+    // editor.onDidPaste((e) => {
+    //   if (!pasteCodeRef.current && e && e.range && e.range.startLineNumber >= 0 && e.range.endLineNumber >= 0 && e.range.endLineNumber - e.range.startLineNumber > 10) {
+    //     const modalContent: AlertModal = {
+    //       id: 'newCodePasted',
+    //       title: 'Pasted Code Alert',
+    //       message: (
+    //         <div>
+    //           {' '}
+    //           <i className="fas fa-exclamation-triangle text-danger mr-1"></i>
+    //           You have just pasted a code snippet or contract in the editor.
+    //           <div>
+    //             Make sure you fully understand this code before deploying or interacting with it. Don't get scammed!
+    //             <div className="mt-2">
+    //               Running untrusted code can put your wallet <span className="text-warning"> at risk </span>. In a worst-case scenario, you could{' '}
+    //               <span className="text-warning">lose all your money</span>.
+    //             </div>
+    //             <div className="text-warning  mt-2">If you don't fully understand it, please don't run this code.</div>
+    //             <div className="mt-2">If you are not a smart contract developer, ask someone you trust who has the skills to determine if this code is safe to use.</div>
+    //             <div className="mt-2">
+    //               See{' '}
+    //               <a target="_blank" href="https://remix-ide.readthedocs.io/en/latest/security.html">
+    //                 {' '}
+    //                 these recommendations{' '}
+    //               </a>{' '}
+    //               for more information.
+    //             </div>
+    //           </div>
+    //         </div>
+    //       ),
+    //     }
+    //     props.plugin.call('notification', 'alert', modalContent)
+    //     pasteCodeRef.current = true
+    //   }
+    // })
 
     // zoomin zoomout
     editor.addCommand(monacoRef.current.KeyMod.CtrlCmd | (monacoRef.current.KeyCode as any).US_EQUAL, () => {
-      editor.updateOptions({fontSize: editor.getOption(51) + 1})
+      editor.updateOptions({ fontSize: editor.getOption(51) + 1 })
     })
     editor.addCommand(monacoRef.current.KeyMod.CtrlCmd | (monacoRef.current.KeyCode as any).US_MINUS, () => {
-      editor.updateOptions({fontSize: editor.getOption(51) - 1})
+      editor.updateOptions({ fontSize: editor.getOption(51) - 1 })
     })
 
     // add context menu items
@@ -654,8 +655,8 @@ export const EditorUI = (props: EditorUIProps) => {
         monacoRef.current.KeyMod.CtrlCmd | monacoRef.current.KeyCode.Equal,
       ],
       run: () => {
-        editor.updateOptions({fontSize: editor.getOption(51) + 1})
-      }
+        editor.updateOptions({ fontSize: editor.getOption(51) + 1 })
+      },
     }
     const zoomOutAction = {
       id: 'zoomOut',
@@ -667,8 +668,8 @@ export const EditorUI = (props: EditorUIProps) => {
         monacoRef.current.KeyMod.CtrlCmd | monacoRef.current.KeyCode.Minus,
       ],
       run: () => {
-        editor.updateOptions({fontSize: editor.getOption(51) - 1})
-      }
+        editor.updateOptions({ fontSize: editor.getOption(51) - 1 })
+      },
     }
     const formatAction = {
       id: 'autoFormat',
@@ -866,24 +867,30 @@ export const EditorUI = (props: EditorUIProps) => {
 
   return (
     <div className="w-100 h-100 d-flex flex-column-reverse">
-      <Editor
-        width="100%"
-        path={props.currentFile}
-        language={editorModelsState[props.currentFile] ? editorModelsState[props.currentFile].language : 'text'}
-        onMount={handleEditorDidMount}
-        beforeMount={handleEditorWillMount}
-        options={{
-          glyphMargin: true,
-          readOnly: (!editorRef.current || !props.currentFile) && editorModelsState[props.currentFile]?.readOnly,
-        }}
-        defaultValue={defaultEditorValue}
-      />
-      {editorModelsState[props.currentFile]?.readOnly && (
-        <span className="pl-4 h6 mb-0 w-100 alert-info position-absolute bottom-0 end-0">
-          <i className="fas fa-lock-alt p-2"></i>
-          The file is opened in <b>read-only</b> mode.
-        </span>
-      )}
+      <div style={{ backgroundColor: '#FFFFFF', width: '100%', height: '100%', borderRadius: '10px', overflow: 'hidden', padding: '40px 0px' }}>
+        <Editor
+          width="100%"
+          path={props.currentFile}
+          language={editorModelsState[props.currentFile] ? editorModelsState[props.currentFile].language : 'text'}
+          onMount={handleEditorDidMount}
+          beforeMount={handleEditorWillMount}
+          options={{
+            screenReaderAnnounceInlineSuggestion: false,
+            minimap: {
+              enabled: false,
+            },
+            glyphMargin: true,
+            readOnly: (!editorRef.current || !props.currentFile) && editorModelsState[props.currentFile]?.readOnly,
+          }}
+          defaultValue={defaultEditorValue}
+        />
+        {editorModelsState[props.currentFile]?.readOnly && (
+          <span className="pl-4 h6 mb-0 w-100 alert-info position-absolute bottom-0 end-0">
+            <i className="fas fa-lock-alt p-2"></i>
+            The file is opened in <b>read-only</b> mode.
+          </span>
+        )}
+      </div>
     </div>
   )
 }

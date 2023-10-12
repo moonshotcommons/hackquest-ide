@@ -199,7 +199,7 @@ export const RemixUiTerminal = (props: RemixUiTerminalProps) => {
   const _shell = async (script, scopedCommands, done) => {
     // default shell
     if (script.indexOf('remix:') === 0) {
-      return done(null, intl.formatMessage({id: 'terminal.text1'}))
+      return done(null, intl.formatMessage({ id: 'terminal.text1' }))
     }
     if (script.indexOf('remix.') === 0) {
       // we keep the old feature. This will basically only be called when the command is querying the "remix" object.
@@ -594,7 +594,7 @@ export const RemixUiTerminal = (props: RemixUiTerminalProps) => {
               <i className="fas fa-ban" aria-hidden="true"></i>
             </CustomTooltip>
           </div>
-          <CustomTooltip placement="top" tooltipId="terminalClear" tooltipClasses="text-nowrap" tooltipText={<FormattedMessage id="terminal.pendingTransactions" />}>
+          {/* <CustomTooltip placement="top" tooltipId="terminalClear" tooltipClasses="text-nowrap" tooltipText={<FormattedMessage id="terminal.pendingTransactions" />}>
             <div className="mx-2">0</div>
           </CustomTooltip>
           <div className="h-80 mx-3 align-items-center remix_ui_terminal_listenOnNetwork custom-control custom-checkbox">
@@ -622,7 +622,7 @@ export const RemixUiTerminal = (props: RemixUiTerminalProps) => {
               placeholder={intl.formatMessage({ id: 'terminal.search' })}
               data-id="terminalInputSearch"
             />
-          </div>
+          </div> */}
         </div>
       </div>
       <div tabIndex={-1} className="remix_ui_terminal_container d-flex h-100 m-0 flex-column" data-id="terminalContainer">
@@ -734,13 +734,21 @@ export const RemixUiTerminal = (props: RemixUiTerminalProps) => {
                       if (x.typewriter && !typeWriterIndexes.current.includes(index)) {
                         typeWriterIndexes.current.push(index)
                         return (
-                          <div className={classNameBlock} data-id="block" key={index}> <span ref={(element) => {
-                            typewrite(element, msg ? msg.toString() : null)
-                          }} className={x.style}></span></div>
+                          <div className={classNameBlock} data-id="block" key={index}>
+                            {' '}
+                            <span
+                              ref={(element) => {
+                                typewrite(element, msg ? msg.toString() : null)
+                              }}
+                              className={x.style}
+                            ></span>
+                          </div>
                         )
                       } else {
                         return (
-                          <div className={classNameBlock} data-id="block" key={i}><span className={x.style}>{msg ? msg.toString() : null}</span></div>
+                          <div className={classNameBlock} data-id="block" key={i}>
+                            <span className={x.style}>{msg ? msg.toString() : null}</span>
+                          </div>
                         )
                       }
                     }
@@ -750,14 +758,23 @@ export const RemixUiTerminal = (props: RemixUiTerminalProps) => {
                   if (x.typewriter && !typeWriterIndexes.current.includes(index)) {
                     typeWriterIndexes.current.push(index)
                     return (
-                      <div className={classNameBlock} data-id="block" key={index}> <span ref={(element) => {
-                        typewrite(element, x.message)
-                      }} className={x.style}></span></div>
+                      <div className={classNameBlock} data-id="block" key={index}>
+                        {' '}
+                        <span
+                          ref={(element) => {
+                            typewrite(element, x.message)
+                          }}
+                          className={x.style}
+                        ></span>
+                      </div>
                     )
                   } else {
                     if (typeof x.message !== 'function') {
                       return (
-                        <div className={classNameBlock} data-id="block" key={index}> <span className={x.style}> {x.message}</span></div>
+                        <div className={classNameBlock} data-id="block" key={index}>
+                          {' '}
+                          <span className={x.style}> {x.message}</span>
+                        </div>
                       )
                     }
                   }
@@ -794,24 +811,24 @@ export const RemixUiTerminal = (props: RemixUiTerminalProps) => {
         cancelFn={modalState.cancelFn}
         handleHide={handleHideModal}
       />
-      {toaster && <Toaster message={intl.formatMessage({id: 'terminal.toasterMsg1'})} />}
-      {toastProvider.show && <Toaster message={intl.formatMessage({id: 'terminal.toasterMsg2'}, {fileName: toastProvider.fileName})} />}
+      {toaster && <Toaster message={intl.formatMessage({ id: 'terminal.toasterMsg1' })} />}
+      {toastProvider.show && <Toaster message={intl.formatMessage({ id: 'terminal.toasterMsg2' }, { fileName: toastProvider.fileName })} />}
     </div>
   )
 }
 
-const typewrite = (elementsRef, message) => {  
-  (() => {
+const typewrite = (elementsRef, message) => {
+  ;(() => {
     let count = 0
     const id = setInterval(() => {
       count++
       elementsRef.innerText = message.substr(0, count)
-      if (message === count) clearInterval(id)  
+      if (message === count) clearInterval(id)
     }, 5)
   })()
 }
 
-function isHtml (value) {
+function isHtml(value) {
   if (!value.indexOf) return false
   return value.indexOf('<div') !== -1 || value.indexOf('<span') !== -1 || value.indexOf('<p') !== -1 || value.indexOf('<label') !== -1 || value.indexOf('<b') !== -1
 }

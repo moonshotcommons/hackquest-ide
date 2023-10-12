@@ -1,18 +1,18 @@
 // eslint-disable-next-line no-use-before-define
 import React from 'react'
-import {AbstractPanel} from './panel'
-import {RemixPluginPanel} from '@remix-ui/panel'
+import { AbstractPanel } from './panel'
+import { RemixPluginPanel } from '@remix-ui/panel'
 import packageJson from '../../../../../package.json'
-import {RemixUIPanelHeader} from '@remix-ui/panel'
-import {PluginViewWrapper} from '@remix-ui/helper'
+import { RemixUIPanelHeader } from '@remix-ui/panel'
+import { PluginViewWrapper } from '@remix-ui/helper'
 // const csjs = require('csjs-inject')
-
+import './styles/side-panel.css'
 const sidePanel = {
   name: 'sidePanel',
   displayName: 'Side Panel',
   description: 'Remix IDE side panel',
   version: packageJson.version,
-  methods: ['addView', 'removeView', 'currentFocus']
+  methods: ['addView', 'removeView', 'currentFocus'],
 }
 
 export class SidePanel extends AbstractPanel {
@@ -85,20 +85,19 @@ export class SidePanel extends AbstractPanel {
 
   render() {
     return (
-      <section className="panel plugin-manager">
-        {' '}
+      <section className="panel plugin-manager hack-side-panel">
         <PluginViewWrapper plugin={this} />
       </section>
     )
   }
 
   updateComponent(state: any) {
-    return <RemixPluginPanel header={<RemixUIPanelHeader plugins={state.plugins}></RemixUIPanelHeader>} plugins={state.plugins} />
+    return <RemixPluginPanel header={<RemixUIPanelHeader plugins={state.plugins} sidePlugin={this}></RemixUIPanelHeader>} plugins={state.plugins} />
   }
 
   renderComponent() {
     this.dispatch({
-      plugins: this.plugins
+      plugins: this.plugins,
     })
   }
 }

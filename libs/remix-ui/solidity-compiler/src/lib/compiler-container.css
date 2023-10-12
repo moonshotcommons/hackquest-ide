@@ -1,0 +1,49 @@
+.complie-content .remixui_compilerSection_label {
+  color: #8c8c8c;
+  margin-bottom: 5px;
+
+}
+.complie-content .udapp_versionSelector {
+  background-color: rgba(140, 140, 140, 0.15);
+  border-radius: 3px;
+}
+.complie-content .udapp_versionSelector .udapp_versionSelector_select {
+  background: #d9d9d9;
+  color: #3e3e3e;
+  border-radius: 0.1875rem !important;
+  border: 0.0625rem solid #d9d9d9 !important;
+  padding: 0.8rem 0.9375rem;
+  font-size: 0.875rem;
+  line-height: 100%;
+  height: fit-content !important;
+  overflow: hidden;
+}
+.complie-content .udapp_versionSelector a {
+  margin-left: 7px;
+}
+.complie-content .udapp_versionSelector button:focus {
+  box-shadow: none;
+}
+.complie-content .compile-btn {
+  margin-top: 12px;
+  width: 89px;
+  height: 27px;
+  color:#0B0B0B;
+  font-size: 12px;
+  letter-spacing: 0.24px;
+  background: #FFD850;
+  border-radius: 32px;
+  border:none;
+  outline: none;
+}
+.complie-content .custom-dropdown-items,
+.complie-content .custom-dropdown-items>ul {
+  width: 100%;
+}
+.complie-content .select-ellipsis {
+  display: block;
+  text-overflow: ellipsis;
+  width: 100%;
+  overflow: hidden;
+  word-wrap: normal;
+}

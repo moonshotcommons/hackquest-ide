@@ -1,0 +1,10 @@
+.hack-side-panel {
+  background-color: transparent;
+}
+
+.hackquestIDE > #side-panel {
+  border-left: none !important;
+  border-right: none !important;
+  padding: 20px;
+  padding-right: 0;
+}

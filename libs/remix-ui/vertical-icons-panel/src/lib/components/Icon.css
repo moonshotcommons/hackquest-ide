@@ -1,0 +1,8 @@
+.remixui_icon {
+  position: relative;
+}
+.badge-content {
+  position: absolute;
+  right: 10px;
+  bottom: -4px;
+}
