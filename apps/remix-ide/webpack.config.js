@@ -11,10 +11,10 @@ const axios = require('axios')
 const getEnv = () => {
   switch (process.env.NODE_ENV) {
     case 'staging':
+      return 'staging'
+    case 'prod':
       return 'production'
-    case 'production':
-      return 'production'
-    case 'development':
+    case 'dev':
     default:
       return 'development'
   }
