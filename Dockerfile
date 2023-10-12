@@ -20,11 +20,11 @@ RUN yarn install
 
 COPY . .
 
-ARG NODE_ENV=$NODE_ENV
+ARG NODE_ENV
 
-RUN echo "The value of MY_ARG is: $NODE_ENV"
+ENV NODE_ENV ${NODE_ENV}
 
-RUN yarn run build:$NODE_ENV
+RUN yarn run build:production
 
 EXPOSE 8080
 
