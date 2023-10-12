@@ -51,12 +51,22 @@ const HackquestHeader: FC = () => {
     // console.log(process.env.NODE_ENV)
     switch (process.env.NODE_ENV) {
       case 'staging':
+        console.log(process.env.NODE_ENV, '生效')
         return 'https://staging.hackquest.io/'
       case 'production':
+        console.log(process.env.NODE_ENV, '生效')
+        return 'https://hackquest.io/'
+      case 'prod':
+        console.log(process.env.NODE_ENV, '生效')
         return 'https://hackquest.io/'
       case 'development':
+        console.log(process.env.NODE_ENV, '生效')
+        return 'https://dev.hackquest.io/'
+      case 'dev':
+        console.log(process.env.NODE_ENV, '生效')
         return 'https://dev.hackquest.io/'
       default:
+        console.log('default', '生效')
         return 'http://localhost:3000'
     }
   }
