@@ -3,10 +3,10 @@ FROM node:20-bullseye
 WORKDIR /home/remix
 
 RUN apt-get update && apt-get install -y \
-    python3 \
-    make \
-    g++ \
-    chromium
+  python3 \
+  make \
+  g++ \
+  chromium
 
 COPY package*.json yarn.lock ./
 
@@ -20,7 +20,11 @@ RUN yarn install
 
 COPY . .
 
-RUN yarn run build:production
+ARG NODE_ENV=$NODE_ENV
+
+RUN echo "The value of MY_ARG is: $NODE_ENV"
+
+RUN yarn run build:$NODE_ENV
 
 EXPOSE 8080
 

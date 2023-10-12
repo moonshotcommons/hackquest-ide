@@ -11,8 +11,8 @@ const axios = require('axios')
 const getEnv = () => {
   switch (process.env.NODE_ENV) {
     case 'staging':
-      return 'staging'
-    case 'prod':
+      return 'production'
+    case 'production':
       return 'production'
     case 'development':
     default:
@@ -59,6 +59,7 @@ module.exports = composePlugins(withNx(), withReact(), (config) => {
   // e.g. `config.plugins.push(new MyPlugin())`
 
   // add fallback for node modules
+  console.log(config.mode, process.env.NODE_ENV, '----------------------')
   config.resolve.fallback = {
     ...config.resolve.fallback,
     crypto: require.resolve('crypto-browserify'),
