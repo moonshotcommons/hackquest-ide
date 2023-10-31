@@ -41,6 +41,7 @@ element.style {
 }
 
 .remix_ui_terminal_journal {
+  flex:1;
   margin-top: auto;
   margin-bottom: 2rem;
   font-family: monospace;
