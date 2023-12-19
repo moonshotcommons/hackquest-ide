@@ -236,3 +236,10 @@ table .active {
 .remix_ui_terminal_debug:hover {
   opacity: 0.8;
 }
+.remix_ui_terminal_debug_pre {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.remix_ui_terminal_debug_pre::-webkit-scrollbar {
+  display: none;
+}
