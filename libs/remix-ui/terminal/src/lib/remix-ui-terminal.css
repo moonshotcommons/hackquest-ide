@@ -47,6 +47,13 @@ element.style {
   font-family: monospace;
   overflow-y: scroll;
 }
+.remix_ui_terminal_journal pre {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.remix_ui_terminal_journal pre::-webkit-scrollbar {
+  display: none;
+}
 .remix_ui_terminal_block {
   white-space: pre-wrap;
   font-family: monospace;
@@ -236,10 +243,4 @@ table .active {
 .remix_ui_terminal_debug:hover {
   opacity: 0.8;
 }
-.remix_ui_terminal_debug_pre pre {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-.remix_ui_terminal_debug_pre pre::-webkit-scrollbar {
-  display: none;
-}
+
