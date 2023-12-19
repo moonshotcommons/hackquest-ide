@@ -48,7 +48,7 @@ element.style {
   overflow-y: scroll;
 }
 .remix_ui_terminal_journal pre::-webkit-scrollbar {
-  height: 3px;
+  height: 6px;
 }
 
 .remix_ui_terminal_journal pre::-webkit-scrollbar-thumb {
