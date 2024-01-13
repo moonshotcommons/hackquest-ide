@@ -1,11 +1,9 @@
-name: Main
+name: main
 
 on:
   push:
     branches:
       - main
-  pull_request:
-    branches: ['main']
   workflow_dispatch:
     inputs:
       env:
@@ -29,6 +27,7 @@ permissions:
 
 jobs:
   build:
+    name: Build[${{ github.event.inputs.env || 'dev' }}]
     runs-on: ubuntu-latest
     environment:
       name: ${{ github.event.inputs.env || 'dev' }}
@@ -81,6 +80,7 @@ jobs:
 
   deploy:
     needs: [build]
+    name: Deploy[${{ github.event.inputs.env || 'dev' }}]
     runs-on: ubuntu-latest
     environment:
       name: ${{ github.event.inputs.env || 'dev' }}
