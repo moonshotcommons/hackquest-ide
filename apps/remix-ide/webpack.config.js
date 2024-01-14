@@ -14,7 +14,7 @@ const getEnv = () => {
       return 'staging'
     case 'prod':
       return 'production'
-    case 'development':
+    case 'dev':
     default:
       return 'development'
   }
@@ -59,6 +59,7 @@ module.exports = composePlugins(withNx(), withReact(), (config) => {
   // e.g. `config.plugins.push(new MyPlugin())`
 
   // add fallback for node modules
+  console.log(config.mode, process.env.NODE_ENV, '----------------------')
   config.resolve.fallback = {
     ...config.resolve.fallback,
     crypto: require.resolve('crypto-browserify'),

@@ -1,11 +1,9 @@
-name: Main
+name: main
 
 on:
   push:
     branches:
       - main
-  pull_request:
-    branches: ['main']
   workflow_dispatch:
     inputs:
       env:
@@ -29,6 +27,7 @@ permissions:
 
 jobs:
   build:
+    name: Build[${{ github.event.inputs.env || 'dev' }}]
     runs-on: ubuntu-latest
     environment:
       name: ${{ github.event.inputs.env || 'dev' }}
@@ -72,6 +71,7 @@ jobs:
             ${{ steps.login-ecr.outputs.registry }}/${{ vars.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+          build-args: NODE_ENV=${{github.event.inputs.env || 'dev'}}
 
       - name: Move cache
         run: |
@@ -80,6 +80,7 @@ jobs:
 
   deploy:
     needs: [build]
+    name: Deploy[${{ github.event.inputs.env || 'dev' }}]
     runs-on: ubuntu-latest
     environment:
       name: ${{ github.event.inputs.env || 'dev' }}
